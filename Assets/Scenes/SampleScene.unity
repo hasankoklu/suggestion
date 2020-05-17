@@ -344,296 +344,296 @@ MonoBehaviour:
     HeroGenericType: 0
     HeroFightStyleList: 
     description: 
-  - name: ziggs
+  - name: 'Leona '
     level: 0
     betterItemIdList: 000000000000000000000000
     HeroGenericType: 0
     HeroFightStyleList: 
     description: 
-  - name: ziggs
+  - name: Darius
     level: 0
     betterItemIdList: 000000000000000000000000
     HeroGenericType: 0
     HeroFightStyleList: 
     description: 
-  - name: ziggs
+  - name: Xin Zhao
+    level: 1
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Sona
+    level: 1
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Poppy
+    level: 1
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Neeko
+    level: 1
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Master Yi
+    level: 1
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: 'Lucian '
+    level: 1
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Karma
+    level: 1
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Jayce
+    level: 1
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Graves
+    level: 1
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Zoe
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Xayah
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Twisted Fate
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Syandra
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Shen
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Shaco
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Rumble
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Rakan
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Malphite
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Kha'Zix
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Kai'Sa
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Jhin
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Jarvan IV
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Fiora
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Ezreal
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Caitlyn
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Blitzcrank
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: 'Annie '
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Ahri
+    level: 2
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Wukong
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Vi
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Soraka
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Lux
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Kassadin
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Jinx
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: "Irel\u0131a"
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Gangplank
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Fizz
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Ashe
+    level: 3
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Xerath
+    level: 4
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Vel'Koz
+    level: 4
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Thresh
+    level: 4
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Miss Fortune
+    level: 4
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Lulu
+    level: 4
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Kayle
+    level: 4
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Ekko
+    level: 4
+    betterItemIdList: 000000000000000000000000
+    HeroGenericType: 0
+    HeroFightStyleList: 
+    description: 
+  - name: Cho'Gath
     level: 0
     betterItemIdList: 000000000000000000000000
     HeroGenericType: 0
     HeroFightStyleList: 
     description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
-    betterItemIdList: 000000000000000000000000
-    HeroGenericType: 0
-    HeroFightStyleList: 
-    description: 
-  - name: ziggs
-    level: 0
+  - name: Aurelion Sol
+    level: 4
     betterItemIdList: 000000000000000000000000
     HeroGenericType: 0
     HeroFightStyleList: 
