@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class manager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
+    public int currentGenericType;
 
     public List<Hero> heroList = new List<Hero>();
     public List<Item> itemList = new List<Item>();
@@ -13,15 +16,36 @@ public class manager : MonoBehaviour
     public List<HeroGenericType> heroGenericTypeList = new List<HeroGenericType>();
     public List<HeroFightStyle> heroFightStyleList = new List<HeroFightStyle>();
 
-    private void Start()
-    {
+    public List<Hero> myHeroList = new List<Hero>();
+    public List<Item> myItemList = new List<Item>();
+    public List<ItemPiece> myItemPieceList = new List<ItemPiece>();
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(this);
+        }
+    }
+    
+    void AddHeroToMyTeamList(int heroIndex)
+    {
+        myHeroList.Add(heroList[heroIndex]);
+        CanvasManager.instance.SetMyHeroList();
     }
 
-
-    
+    void RemoveHeroToMyTeamList(Hero myHero)
+    {
+        myHeroList.Remove(myHero);
+        CanvasManager.instance.SetMyHeroList();
+    }
+         
     #region Classes
-    
+
     [Serializable]
     public class Hero
     {
@@ -61,7 +85,7 @@ public class manager : MonoBehaviour
         public string name;
         public string description;
     }
-    
+
     #endregion
 
 }
