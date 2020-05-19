@@ -19,6 +19,9 @@ public class manager : MonoBehaviour
     }
 
 
+    
+    #region Classes
+    
     [Serializable]
     public class Hero
     {
@@ -28,7 +31,6 @@ public class manager : MonoBehaviour
         public int HeroGenericType;
         public List<int> HeroFightStyleList;
         public string description;
-
     }
 
     [Serializable]
@@ -59,4 +61,7 @@ public class manager : MonoBehaviour
         public string name;
         public string description;
     }
+    
+    #endregion
+
 }
