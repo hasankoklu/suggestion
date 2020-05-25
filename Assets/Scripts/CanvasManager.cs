@@ -10,8 +10,22 @@ public class CanvasManager : MonoBehaviour
     public static CanvasManager instance;
 
     public GameObject heroMenuRect;
+    public GameObject ItemMenuRect;
     public GameObject myHeroMenuRect;
     public GameObject myItemPieceMenuRect;
+    public GameObject selectedInfoRect;
+    public GameObject suggestionRect;
+    public GameObject extraItemSuggestionRect;
+    //public GameObject generalSuggestionRect;
+    public GameObject heroTeamSuggestionRect;
+    public GameObject itemSuggestionRect;
+
+    public Button removeHeroButton;
+
+    public Text selectedHeroNameText;
+    //public GameObject bestItemsRect;
+    public GameObject myHeroItemsRect;
+
 
     private void Awake()
     {
@@ -27,7 +41,28 @@ public class CanvasManager : MonoBehaviour
 
     private void Start()
     {
+        RefreshListes();
+    }
+
+    public void RefreshListes()
+    {
+        SetMyItemPiece();
+        SetHeroList();
         SetMyHeroList();
+
+        if (extraItemSuggestionRect.activeInHierarchy)
+            GameManager.instance.ItemSuggestButtonOnClick();
+    }
+
+    public void RemoveHeroButtonOnClick(int index)
+    {
+        GameManager.instance.myHeroList.Remove(GameManager.instance.myHeroList[index]);
+        //selectedInfoRect.SetActive(false);
+        SetMyHeroList();
+        if (GameManager.instance.myHeroList != null)
+        {
+            SetSelectedInfoList(0);
+        }
     }
 
     #region Dropdown OnValueChange
@@ -54,6 +89,30 @@ public class CanvasManager : MonoBehaviour
 
     #endregion
 
+    #region ItemPieceAddRemove
+
+    public void AddItemPieceToMyItemPieceList(int index)
+    {
+        GameManager.instance.myItemPieceList.Add(GameManager.instance.itemPieceList[index]);
+        SetMyItemPiece();
+
+        if (extraItemSuggestionRect.activeInHierarchy)
+            GameManager.instance.ItemSuggestButtonOnClick();
+    }
+
+    public void RemoveItemPieceToMyItemPieceList(int index)
+    {
+        GameManager.instance.myItemPieceList.Remove(
+            GameManager.instance.myItemPieceList.Where(x => x.name == GameManager.instance.itemPieceList[index].name).FirstOrDefault()
+            );
+        SetMyItemPiece();
+
+        if (extraItemSuggestionRect.activeInHierarchy)
+            GameManager.instance.ItemSuggestButtonOnClick();
+    }
+
+    #endregion
+
     #region GeneralListsArrangement
 
     void SetHeroList()
@@ -65,6 +124,15 @@ public class CanvasManager : MonoBehaviour
 
         for (int i = 0; i < GameManager.instance.heroList.Where(x => x.HeroGenericType.GetHashCode() == GameManager.instance.currentGenericType).Count(); i++)
         {
+            heroMenuRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroList.Where(x => x.HeroGenericType.GetHashCode() == GameManager.instance.currentGenericType).ToList()[i].image;
+            heroMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroList.Where(x => x.HeroGenericType.GetHashCode() == GameManager.instance.currentGenericType).ToList()[i].name;
+
+
+            GameManager.Hero hero = GameManager.instance.heroList.Where(x => x.HeroGenericType.GetHashCode() == GameManager.instance.currentGenericType).ToList()[i];
+
+            heroMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
+            heroMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.AddListener(() => GameManager.instance.AddHeroToMyHeroList(hero));
+
             heroMenuRect.transform.GetChild(i).gameObject.SetActive(true);
         }
     }
@@ -72,6 +140,19 @@ public class CanvasManager : MonoBehaviour
     #endregion
 
     #region MyListsArrangement
+
+    public void SetSelectedInfoList(int index)
+    {
+        extraItemSuggestionRect.SetActive(false);
+        heroTeamSuggestionRect.SetActive(false);
+
+        suggestionRect.SetActive(true);
+        //extraItemSuggestionRect.SetActive(false);
+
+        GameManager.instance.selectedHeroIndex = index;
+
+        GameManager.instance.MakeSuggestionforSelectedHero();
+    }
 
     public void SetMyHeroList()
     {
@@ -82,22 +163,39 @@ public class CanvasManager : MonoBehaviour
 
         for (int i = 0; i < GameManager.instance.myHeroList.Count; i++)
         {
+            //Debug.Log("i : " + i);
+            myHeroMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
+            int temp = i;
+            myHeroMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.AddListener(() => SetSelectedInfoList(temp));
+            myHeroMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.myHeroList[i].image;
+            myHeroMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = GameManager.instance.myHeroList[i].name;
             myHeroMenuRect.transform.GetChild(i).gameObject.SetActive(true);
+        }
+
+        if (GameManager.instance.myHeroList.Count == 1)
+        {
+            SetSelectedInfoList(0);
         }
     }
 
-    //public void SetMyItemPieceList()
-    //{
-    //    for (int i = 0; i < myHeroMenuRect.transform.childCount; i++)
-    //    {
-    //        myItemPieceMenuRect.transform.GetChild(i).gameObject.SetActive(false);
-    //    }
+    void SetMyItemPiece()
+    {
+        for (int i = 0; i < myItemPieceMenuRect.transform.childCount; i++) // Look Here
+        {
+            myItemPieceMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.itemPieceList[i].image;
 
-    //    for (int i = 0; i < GameManager.instance.myItemList.Count; i++)
-    //    {
-    //        myItemPieceMenuRect.transform.GetChild(i).gameObject.SetActive(true);
-    //    }
-    //}
+            if (GameManager.instance.myItemPieceList.Where(x => x.name == GameManager.instance.itemPieceList[i].name).FirstOrDefault() != null)
+                myItemPieceMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text =
+                    GameManager.instance.myItemPieceList.Where(x => x.name == GameManager.instance.itemPieceList[i].name).Count().ToString();
+            else
+            {
+                myItemPieceMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = "0";
+            }
+        }
+
+        GameManager.instance.MakeSuggestionforSelectedHero();
+    }
+
 
     #endregion
 
@@ -173,4 +271,17 @@ public class CanvasManager : MonoBehaviour
 
     //public enum PanelPosition { Top, Right, Bottom, Left };
     //public enum ScaleType { FullScale, AutoScale };
+
+    //public void SetMyItemPieceList()
+    //{
+    //    for (int i = 0; i < myHeroMenuRect.transform.childCount; i++)
+    //    {
+    //        myItemPieceMenuRect.transform.GetChild(i).gameObject.SetActive(false);
+    //    }
+
+    //    for (int i = 0; i < GameManager.instance.myItemList.Count; i++)
+    //    {
+    //        myItemPieceMenuRect.transform.GetChild(i).gameObject.SetActive(true);
+    //    }
+    //}
 }
