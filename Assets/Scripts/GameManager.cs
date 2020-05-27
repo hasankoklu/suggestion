@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -588,10 +590,70 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public List<Hero> TheBestHeroes;
+
+    public void Save_TheBestHeroes(List<Hero> TheBestHeroes)
+    {
+        string path = Application.persistentDataPath + "/TheBestHeroes.txt";
+        if (!string.IsNullOrEmpty(path))
+        {
+            var jsonString = JsonConvert.SerializeObject(TheBestHeroes, Formatting.Indented, new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore });
+            System.IO.File.WriteAllText(path, jsonString);
+            Debug.Log("TheBestHeroes Successfully Saved.");
+        }
+    }
+
+    public IEnumerator Read_TheBestHeroes()
+    {
+        //if (Application.internetReachability != NetworkReachability.NotReachable)
+        //{
+        //    UnityWebRequest uwr = UnityWebRequest.Get("http://cebur.fun/Suggestion" + "/TheBestHeroes.txt");
+        //    yield return uwr.SendWebRequest();
+        //    if (uwr.isNetworkError)
+        //    {
+        //        Debug.Log("Error");
+        //    }
+        //    else
+        //    {
+        //        var Result = JsonConvert.DeserializeObject<List<Hero>>(uwr.downloadHandler.text, new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate });
+        //        TheBestHeroes = new List<Hero>();
+        //        TheBestHeroes = Result;
+        //        ExtendedPlayerPrefs.SetBool("TheBestHeroes", true);
+        //        ExtendedPlayerPrefs.Flush();
+        //        try
+        //        {
+        //            System.IO.File.WriteAllText(Application.persistentDataPath + "/TheBestHeroes.txt", uwr.downloadHandler.text);
+        //        }
+        //        catch (System.Exception e)
+        //        {
+        //            Debug.Log(e.Message);
+        //            throw;
+        //        }
+        //    }
+        //}
+        //else if (ExtendedPlayerPrefs.GetBool("TheBestHeroes"))
+        //{
+        string path = Application.persistentDataPath + "/TheBestHeroes.txt";
+        if (!string.IsNullOrEmpty(path))
+        {
+            UnityWebRequest uwr = UnityWebRequest.Get(path);
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+            {
+                Debug.Log("TheBestHeroes Load Error");
+            }
+            else
+            {
+                var Result = JsonConvert.DeserializeObject<List<Hero>>(uwr.downloadHandler.text, new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate });
+                TheBestHeroes = new List<Hero>();
+                TheBestHeroes = Result;
+                Debug.Log("TheBestHeroes Successfully Loaded.");
+            }
+        }
+        //}
+    }
+
     #region Classes
-
-
-
 
     [Serializable]
     public class Hero
