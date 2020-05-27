@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public List<Item> myItemList = new List<Item>();
     public List<ItemPiece> myItemPieceList = new List<ItemPiece>();
 
+    public List<BestHeroTeam> theBestTeamList;
+
     public int selectedHeroIndex;
 
     private void Awake()
@@ -515,17 +517,17 @@ public class GameManager : MonoBehaviour
                                             tempHeroList.Clear();
                                             tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p], heroList[r] });
                                             ArrangeBestTeamList(tempHeroList);
-                                            
-
-                                            for (int s = 9; s < heroList.Count; s++)
-                                            {
-                                                tempHeroList.Clear();
-                                                tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p], heroList[r], heroList[s] });
-                                                ArrangeBestTeamList(tempHeroList);
 
 
-                                                yield return new WaitForFixedUpdate();
-                                            }
+                                            //for (int s = 9; s < heroList.Count; s++)
+                                            //{
+                                            //    tempHeroList.Clear();
+                                            //    tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p], heroList[r], heroList[s] });
+                                            //    ArrangeBestTeamList(tempHeroList);
+
+
+                                            //    yield return new WaitForFixedUpdate();
+                                            //}
                                             yield return new WaitForFixedUpdate();
                                         }
                                         yield return new WaitForFixedUpdate();
@@ -544,6 +546,7 @@ public class GameManager : MonoBehaviour
             }
             yield return new WaitForFixedUpdate();
         }
+        Debug.Log("Final Count : " + theBestTeamList.Count());
     }
 
     public void ArrangeBestTeamList(List<Hero> heroes)
@@ -578,6 +581,7 @@ public class GameManager : MonoBehaviour
 
         if (tempBestHeroTeam.buffCount > 7)
         {
+            theBestTeamList.Add(tempBestHeroTeam);
             Debug.Log("Buff Count : " + tempBestHeroTeam.buffCount + "\nHeroes " + heronames);
             tempHeroList.Clear();
             tempBestHeroTeam = new BestHeroTeam();
