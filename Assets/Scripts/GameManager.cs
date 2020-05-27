@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
+        StartCoroutine(ListAllHeroTeam());
         //for (int i = 0; i < heroList.Count; i++)
         //{
         //    Debug.Log(i + " : " + heroList[i].name);
@@ -355,91 +357,91 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void SuggestHeroTeamButtonOnClick()
+    public void SuggestHeroTeamButtonOnClick() // sal
     {
         CanvasManager.instance.heroTeamSuggestionRect.SetActive(true);
         CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(0).gameObject.SetActive(true);
         CanvasManager.instance.extraItemSuggestionRect.SetActive(false);
         CanvasManager.instance.suggestionRect.SetActive(false);
 
-        List<BestTeam> bestTeamList = new List<BestTeam>();
+        //List<BestTeam> bestTeamList = new List<BestTeam>();
 
-        for (int i = 0; i < 16; i++)
-        {
-            BestTeam bt = new BestTeam();
-            bt.counter = 0;
-            bt.bestTeamIndex = -1;
-            bestTeamList.Add(bt);
-        }
+        //for (int i = 0; i < 16; i++)
+        //{
+        //    BestTeam bt = new BestTeam();
+        //    bt.counter = 0;
+        //    bt.bestTeamIndex = -1;
+        //    bestTeamList.Add(bt);
+        //}
 
         //if (myHeroList.Count == 0)
         //    return;
 
-        for (int i = 0; i < bestHeroTeamList.Count; i++) // increase here when add new team
-        {
-            if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId00].name).Count() > 0)
-            {
-                bestTeamList[i].counter++;
-            }
-            if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId01].name).Count() > 0)
-            {
-                bestTeamList[i].counter++;
-            }
-            if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId02].name).Count() > 0)
-            {
-                bestTeamList[i].counter++;
-            }
-            if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId03].name).Count() > 0)
-            {
-                bestTeamList[i].counter++;
-            }
-            if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId04].name).Count() > 0)
-            {
-                bestTeamList[i].counter++;
-            }
-            if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId05].name).Count() > 0)
-            {
-                bestTeamList[i].counter++;
-            }
-            if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId06].name).Count() > 0)
-            {
-                bestTeamList[i].counter++;
-            }
-            if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId07].name).Count() > 0)
-            {
-                bestTeamList[i].counter++;
-            }
-            bestTeamList[i].bestTeamIndex = i;
-        }
-        bestTeamList = bestTeamList.OrderByDescending(x => x.counter).ToList();
+        //for (int i = 0; i < bestHeroTeamList.Count; i++) // increase here when add new team
+        //{
+        //    if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId00].name).Count() > 0)
+        //    {
+        //        bestTeamList[i].counter++;
+        //    }
+        //    if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId01].name).Count() > 0)
+        //    {
+        //        bestTeamList[i].counter++;
+        //    }
+        //    if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId02].name).Count() > 0)
+        //    {
+        //        bestTeamList[i].counter++;
+        //    }
+        //    if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId03].name).Count() > 0)
+        //    {
+        //        bestTeamList[i].counter++;
+        //    }
+        //    if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId04].name).Count() > 0)
+        //    {
+        //        bestTeamList[i].counter++;
+        //    }
+        //    if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId05].name).Count() > 0)
+        //    {
+        //        bestTeamList[i].counter++;
+        //    }
+        //    if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId06].name).Count() > 0)
+        //    {
+        //        bestTeamList[i].counter++;
+        //    }
+        //    if (myHeroList.Where(x => x.name == heroList[bestHeroTeamList[i].heroId07].name).Count() > 0)
+        //    {
+        //        bestTeamList[i].counter++;
+        //    }
+        //    bestTeamList[i].bestTeamIndex = i;
+        //}
+        //bestTeamList = bestTeamList.OrderByDescending(x => x.counter).ToList();
 
-        for (int i = 0; i < 3; i++) // suggegst count
-        {
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId00].image;
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId00].name;
+        //for (int i = 0; i < 3; i++) // suggegst count
+        //{
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId00].image;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId00].name;
 
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId01].image;
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(1).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId01].name;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId01].image;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(1).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId01].name;
 
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId02].image;
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(2).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId02].name;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId02].image;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(2).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId02].name;
 
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(3).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId03].image;
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(3).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId03].name;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(3).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId03].image;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(3).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId03].name;
 
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(4).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId04].image;
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(4).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId04].name;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(4).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId04].image;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(4).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId04].name;
 
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(5).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId05].image;
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(5).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId05].name;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(5).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId05].image;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(5).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId05].name;
 
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(6).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId06].image;
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(6).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId06].name;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(6).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId06].image;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(6).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId06].name;
 
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(7).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId07].image;
-            CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(7).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId07].name;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(7).GetComponent<Image>().sprite = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId07].image;
+        //    CanvasManager.instance.heroTeamSuggestionRect.transform.GetChild(i).GetChild(7).GetChild(0).GetComponent<Text>().text = heroList[bestHeroTeamList[bestTeamList[i].bestTeamIndex].heroId07].name;
 
-        }
+        //}
     }
 
     void TakeItem(Item item)
@@ -460,13 +462,132 @@ public class GameManager : MonoBehaviour
         CanvasManager.instance.RefreshListes();
     }
 
+
+    List<Hero> tempHeroList = new List<Hero>();
+    BestHeroTeam tempBestHeroTeam = new BestHeroTeam();
+    public IEnumerator ListAllHeroTeam()
+    {
+
+        for (int i = 0; i < heroList.Count; i++)
+        {
+            yield return new WaitForFixedUpdate();
+            for (int j = 1; j < heroList.Count; j++)
+            {
+                yield return new WaitForFixedUpdate();
+                for (int k = 2; k < heroList.Count; k++)
+                {
+                    tempHeroList.Clear();
+                    tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k] });
+                    ArrangeBestTeamList(tempHeroList);
+
+                    for (int l = 3; l < heroList.Count; l++)
+                    {
+                        tempHeroList.Clear();
+                        tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l] });
+                        ArrangeBestTeamList(tempHeroList);
+
+                        for (int m = 4; m < heroList.Count; m++)
+                        {
+                            tempHeroList.Clear();
+                            tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m] });
+                            ArrangeBestTeamList(tempHeroList);
+
+                            for (int n = 5; n < heroList.Count; n++)
+                            {
+                                tempHeroList.Clear();
+                                tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n] });
+                                ArrangeBestTeamList(tempHeroList);
+
+                                for (int o = 6; o < heroList.Count; o++)
+                                {
+                                    tempHeroList.Clear();
+                                    tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o] });
+                                    ArrangeBestTeamList(tempHeroList);
+
+                                    for (int p = 7; p < heroList.Count; p++)
+                                    {
+                                        tempHeroList.Clear();
+                                        tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p] });
+                                        ArrangeBestTeamList(tempHeroList);
+
+                                        for (int r = 8; r < heroList.Count; r++)
+                                        {
+                                            tempHeroList.Clear();
+                                            tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p], heroList[r] });
+                                            ArrangeBestTeamList(tempHeroList);
+                                            
+
+                                            for (int s = 9; s < heroList.Count; s++)
+                                            {
+                                                tempHeroList.Clear();
+                                                tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p], heroList[r], heroList[s] });
+                                                ArrangeBestTeamList(tempHeroList);
+
+
+                                                yield return new WaitForFixedUpdate();
+                                            }
+                                            yield return new WaitForFixedUpdate();
+                                        }
+                                        yield return new WaitForFixedUpdate();
+                                    }
+                                    yield return new WaitForFixedUpdate();
+                                }
+                                yield return new WaitForFixedUpdate();
+                            }
+                            yield return new WaitForFixedUpdate();
+                        }
+                        yield return new WaitForFixedUpdate();
+                    }
+                    yield return new WaitForFixedUpdate();
+                }
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public void ArrangeBestTeamList(List<Hero> heroes)
+    {
+        tempBestHeroTeam.heroList = new List<Hero>();
+
+        string heronames = "";
+        foreach (Hero hero in heroes)
+        {
+            heronames += " : \n" + hero.name;
+            tempBestHeroTeam.heroList.Add(hero);
+        }
+
+        tempBestHeroTeam.buffCount = 0;
+
+        for (int i = 0; i < heroGenericTypeList.Count; i++)
+        {
+            if (tempBestHeroTeam.heroList.Where(x => x.HeroGenericType == i).Count() / heroGenericTypeList[i].exponent >= 1)
+            {
+                tempBestHeroTeam.buffCount += (int)(tempBestHeroTeam.heroList.Where(x => x.HeroGenericType == i).Count() / heroGenericTypeList[i].exponent);
+            }
+        }
+
+        for (int i = 0; i < heroFightStyleList.Count; i++)
+        {
+
+            if (tempBestHeroTeam.heroList.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent >= 1)
+            {
+                tempBestHeroTeam.buffCount += (int)(tempBestHeroTeam.heroList.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent);
+            }
+        }
+
+        if (tempBestHeroTeam.buffCount > 7)
+        {
+            Debug.Log("Buff Count : " + tempBestHeroTeam.buffCount + "\nHeroes " + heronames);
+            tempHeroList.Clear();
+            tempBestHeroTeam = new BestHeroTeam();
+        }
+    }
+
     #region Classes
 
-    public class BestTeam
-    {
-        public int bestTeamIndex;
-        public int counter;
-    }
+
+
 
     [Serializable]
     public class Hero
@@ -520,16 +641,10 @@ public class GameManager : MonoBehaviour
     [Serializable]
     public class BestHeroTeam
     {
-        public int heroId00;
-        public int heroId01;
-        public int heroId02;
-        public int heroId03;
-        public int heroId04;
-        public int heroId05;
-        public int heroId06;
-        public int heroId07;
-        public int heroId08;
-        public int heroId09;
+        public List<Hero> heroList;
+        public int winCount;
+        public int loseCount;
+        public int buffCount;
     }
 
     #endregion

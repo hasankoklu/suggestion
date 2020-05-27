@@ -16893,7 +16893,7 @@ MonoBehaviour:
     level: 0
     betterItemIdList: 110000001400000004000000
     HeroGenericType: 8
-    HeroFightStyleList: 000000000000000000000000000000000000000000000000
+    HeroFightStyleList: 0600000000000000
     removeIndex: 0
     currentItemList: []
     description: 
@@ -17316,7 +17316,7 @@ MonoBehaviour:
     level: 2
     betterItemIdList: 150000000300000019000000
     HeroGenericType: 3
-    HeroFightStyleList: 0c0000001a000000
+    HeroFightStyleList: 0c00000000000000
     removeIndex: 0
     currentItemList: []
     description: 
@@ -17697,9 +17697,9 @@ MonoBehaviour:
     description: "Yetenek kulland\u0131\u011F\u0131nda di\u011Fer Y\u0131ld\u0131z
       muhaf\u0131zlar\u0131na mana sa\u011Flar"
   heroFightStyleList:
-  - name: Uzay Gemisi
-    exponent: 0
-    description: 0
+  - name: Empty
+    exponent: 99
+    description: Empty
   - name: "D\xF6v\xFC\u015F\xE7\xFC"
     exponent: 2
     description: "D\xF6v\xFC\u015F\xE7\xFCler ilave azami can kazan\u0131r."
@@ -17747,166 +17747,70 @@ MonoBehaviour:
     exponent: 2
     description: "4 saniyeli\u011Fine kalkan kazan\u0131r . Bu kalkan birikmez."
   bestHeroTeamList:
-  - heroId00: 22
-    heroId01: 23
-    heroId02: 19
-    heroId03: 20
-    heroId04: 34
-    heroId05: 29
-    heroId06: 47
-    heroId07: 44
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 0
-    heroId01: 21
-    heroId02: 27
-    heroId03: 40
-    heroId04: 6
-    heroId05: 28
-    heroId06: 50
-    heroId07: 37
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 49
-    heroId01: 47
-    heroId02: 42
-    heroId03: 32
-    heroId04: 18
-    heroId05: 16
-    heroId06: 21
-    heroId07: 22
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 39
-    heroId01: 43
-    heroId02: 31
-    heroId03: 37
-    heroId04: 40
-    heroId05: 35
-    heroId06: 20
-    heroId07: 12
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 43
-    heroId01: 44
-    heroId02: 46
-    heroId03: 31
-    heroId04: 35
-    heroId05: 26
-    heroId06: 18
-    heroId07: 15
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 0
-    heroId01: 21
-    heroId02: 27
-    heroId03: 40
-    heroId04: 6
-    heroId05: 28
-    heroId06: 19
-    heroId07: 41
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 37
-    heroId01: 31
-    heroId02: 40
-    heroId03: 35
-    heroId04: 12
-    heroId05: 5
-    heroId06: 4
-    heroId07: 51
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 0
-    heroId01: 21
-    heroId02: 27
-    heroId03: 40
-    heroId04: 6
-    heroId05: 5
-    heroId06: 19
-    heroId07: 16
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 44
-    heroId01: 39
-    heroId02: 50
-    heroId03: 36
-    heroId04: 6
-    heroId05: 1
-    heroId06: 21
-    heroId07: 0
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 45
-    heroId01: 41
-    heroId02: 37
-    heroId03: 40
-    heroId04: 19
-    heroId05: 11
-    heroId06: 34
-    heroId07: 24
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 45
-    heroId01: 31
-    heroId02: 37
-    heroId03: 40
-    heroId04: 11
-    heroId05: 12
-    heroId06: 2
-    heroId07: 7
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 2
-    heroId01: 4
-    heroId02: 5
-    heroId03: 50
-    heroId04: 50
-    heroId05: 50
-    heroId06: 50
-    heroId07: 50
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 39
-    heroId01: 40
-    heroId02: 35
-    heroId03: 12
-    heroId04: 5
-    heroId05: 4
-    heroId06: 51
-    heroId07: 13
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 37
-    heroId01: 49
-    heroId02: 36
-    heroId03: 26
-    heroId04: 32
-    heroId05: 28
-    heroId06: 21
-    heroId07: 40
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 50
-    heroId01: 50
-    heroId02: 50
-    heroId03: 50
-    heroId04: 50
-    heroId05: 50
-    heroId06: 50
-    heroId07: 50
-    heroId08: 0
-    heroId09: 0
-  - heroId00: 27
-    heroId01: 39
-    heroId02: 35
-    heroId03: 32
-    heroId04: 28
-    heroId05: 10
-    heroId06: 21
-    heroId07: 13
-    heroId08: 0
-    heroId09: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
+  - heroList: []
+    winCount: 0
+    loseCount: 0
+    buffCount: 0
   myHeroList: []
   myItemList: []
   myItemPieceList: []
