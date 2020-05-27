@@ -124,7 +124,7 @@ public class CanvasManager : MonoBehaviour
 
         for (int i = 0; i < GameManager.instance.heroList.Where(x => x.HeroGenericType.GetHashCode() == GameManager.instance.currentGenericType).Count(); i++)
         {
-            heroMenuRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroList.Where(x => x.HeroGenericType.GetHashCode() == GameManager.instance.currentGenericType).ToList()[i].image;
+            heroMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.heroList.Where(x => x.HeroGenericType.GetHashCode() == GameManager.instance.currentGenericType).ToList()[i].image;
             heroMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroList.Where(x => x.HeroGenericType.GetHashCode() == GameManager.instance.currentGenericType).ToList()[i].name;
 
 
@@ -163,7 +163,6 @@ public class CanvasManager : MonoBehaviour
 
         for (int i = 0; i < GameManager.instance.myHeroList.Count; i++)
         {
-            //Debug.Log("i : " + i);
             myHeroMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
             int temp = i;
             myHeroMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.AddListener(() => SetSelectedInfoList(temp));
