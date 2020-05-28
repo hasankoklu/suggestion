@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
-        StartCoroutine(ListAllHeroTeam());
+        //ListAllHeroTeam();
         //for (int i = 0; i < heroList.Count; i++)
         //{
         //    Debug.Log(i + " : " + heroList[i].name);
@@ -469,15 +469,13 @@ public class GameManager : MonoBehaviour
 
     List<Hero> tempHeroList = new List<Hero>();
     BestHeroTeam tempBestHeroTeam = new BestHeroTeam();
-    public IEnumerator ListAllHeroTeam()
+    public void ListAllHeroTeam()
     {
 
         for (int i = 0; i < heroList.Count; i++)
         {
-            yield return new WaitForFixedUpdate();
             for (int j = 1; j < heroList.Count; j++)
             {
-                yield return new WaitForFixedUpdate();
                 for (int k = 2; k < heroList.Count; k++)
                 {
                     tempHeroList.Clear();
@@ -502,51 +500,51 @@ public class GameManager : MonoBehaviour
                                 tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n] });
                                 ArrangeBestTeamList(tempHeroList);
 
-                                for (int o = 6; o < heroList.Count; o++)
-                                {
-                                    tempHeroList.Clear();
-                                    tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o] });
-                                    ArrangeBestTeamList(tempHeroList);
+                                //for (int o = 6; o < heroList.Count; o++)
+                                //{
+                                //    tempHeroList.Clear();
+                                //    tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o] });
+                                //    ArrangeBestTeamList(tempHeroList);
 
-                                    for (int p = 7; p < heroList.Count; p++)
-                                    {
-                                        tempHeroList.Clear();
-                                        tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p] });
-                                        ArrangeBestTeamList(tempHeroList);
+                                //    //for (int p = 7; p < heroList.Count; p++)
+                                //    //{
+                                //    //    tempHeroList.Clear();
+                                //    //    tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p] });
+                                //    //    ArrangeBestTeamList(tempHeroList);
 
-                                        for (int r = 8; r < heroList.Count; r++)
-                                        {
-                                            tempHeroList.Clear();
-                                            tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p], heroList[r] });
-                                            ArrangeBestTeamList(tempHeroList);
-
-
-                                            //for (int s = 9; s < heroList.Count; s++)
-                                            //{
-                                            //    tempHeroList.Clear();
-                                            //    tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p], heroList[r], heroList[s] });
-                                            //    ArrangeBestTeamList(tempHeroList);
+                                //    //    //for (int r = 8; r < heroList.Count; r++)
+                                //    //    //{
+                                //    //    //    tempHeroList.Clear();
+                                //    //    //    tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p], heroList[r] });
+                                //    //    //    ArrangeBestTeamList(tempHeroList);
 
 
-                                            //    yield return new WaitForFixedUpdate();
-                                            //}
-                                            yield return new WaitForFixedUpdate();
-                                        }
-                                        yield return new WaitForFixedUpdate();
-                                    }
-                                    yield return new WaitForFixedUpdate();
-                                }
-                                yield return new WaitForFixedUpdate();
+                                //    //    //    //for (int s = 9; s < heroList.Count; s++)
+                                //    //    //    //{
+                                //    //    //    //    tempHeroList.Clear();
+                                //    //    //    //    tempHeroList.AddRange(new List<Hero>() { heroList[i], heroList[j], heroList[k], heroList[l], heroList[m], heroList[n], heroList[o], heroList[p], heroList[r], heroList[s] });
+                                //    //    //    //    ArrangeBestTeamList(tempHeroList);
+
+
+                                //    //    //    //    yield return new WaitForFixedUpdate();
+                                //    //    //    //}
+                                //    //    //    yield return new WaitForFixedUpdate();
+                                //    //    //}
+                                //    //    yield return new WaitForFixedUpdate();
+                                //    //}
+                                //    yield return new WaitForFixedUpdate();
+                                //}
+                                //yield return new WaitForFixedUpdate();
                             }
-                            yield return new WaitForFixedUpdate();
+                            //yield return new WaitForFixedUpdate();
                         }
-                        yield return new WaitForFixedUpdate();
+                        //yield return new WaitForFixedUpdate();
                     }
-                    yield return new WaitForFixedUpdate();
+                    //yield return new WaitForFixedUpdate();
                 }
-                yield return new WaitForFixedUpdate();
+                //yield return new WaitForFixedUpdate();
             }
-            yield return new WaitForFixedUpdate();
+            //yield return new WaitForFixedUpdate();
         }
         Debug.Log("Final Count : " + theBestTeamList.Count());
     }
@@ -581,7 +579,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (tempBestHeroTeam.buffCount > 7)
+        if (tempBestHeroTeam.buffCount > 4)
         {
             theBestTeamList.Add(tempBestHeroTeam);
             Debug.Log("Buff Count : " + tempBestHeroTeam.buffCount + "\nHeroes " + heronames);
@@ -590,7 +588,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public List<Hero> TheBestHeroes;
+    public List<BestHeroTeam> TheBestHeroes;
+    public void TheBestHeroTeamSuggestion()
+    {
+        foreach (Hero item in heroList)
+        {
+            tempHeroList = myHeroList;
+            tempHeroList.Add(item);
+            ArrangeBestTeamList(tempHeroList);
+        }
+    }
 
     public void Save_TheBestHeroes(List<Hero> TheBestHeroes)
     {
@@ -644,8 +651,8 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                var Result = JsonConvert.DeserializeObject<List<Hero>>(uwr.downloadHandler.text, new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate });
-                TheBestHeroes = new List<Hero>();
+                var Result = JsonConvert.DeserializeObject<List<BestHeroTeam>>(uwr.downloadHandler.text, new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate });
+                TheBestHeroes = new List<BestHeroTeam>();
                 TheBestHeroes = Result;
                 Debug.Log("TheBestHeroes Successfully Loaded.");
             }
