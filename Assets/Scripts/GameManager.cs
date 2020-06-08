@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-
     private void Awake()
     {
         if (instance == null)
@@ -109,6 +108,8 @@ public class GameManager : MonoBehaviour
 
 
         int counter = 0;
+
+
         foreach (ItemPiece itemPiece in myHero.currentItemPieceList)
         {
             CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(3).GetChild(counter).GetComponent<Image>().sprite = itemPiece.image;
@@ -119,6 +120,8 @@ public class GameManager : MonoBehaviour
 
             counter++;
         }
+
+
         foreach (Item item in myHero.currentItemList)
         {
             CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(3).GetChild(counter).GetComponent<Image>().sprite = item.image;
@@ -137,7 +140,54 @@ public class GameManager : MonoBehaviour
             int i = 0;
             foreach (int betterItemId in myHeroList[index].betterItemIdList)
             {
-                if (itemPieceList[itemList[betterItemId].requiredPieceList[0]].name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name && myPieceItemList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[0]].name).Count() > 1)
+                if (myComplateItemList.Where(x => x.name == itemList[betterItemId].name).Count() > 0)
+                {
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+                    Item item = new Item();
+                    item.name = itemList[betterItemId].name;
+                    item.image = itemList[betterItemId].image;
+                    item.description = itemList[betterItemId].description;
+                    item.requiredPieceList = itemList[betterItemId].requiredPieceList;
+                    item.Type = itemList[betterItemId].Type;
+                    item.selectedHeroIndex = index;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuyItem(item));
+
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().color =
+                        new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.r,
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.g,
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.b, 1f);
+
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = itemList[betterItemId].description;
+
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
+
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color = Color.white;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color = Color.white;
+
+                    //ItemPiece itemPiece = new ItemPiece();
+                    //itemPiece.name = itemPieceList[itemList[betterItemId].requiredPieceList[0]].name;
+                    //itemPiece.description = itemPieceList[itemList[betterItemId].requiredPieceList[0]].description;
+                    //itemPiece.image = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
+                    //itemPiece.selectedHeroIndex = index;
+
+                    //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
+                    //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
+
+                    //itemPiece = new ItemPiece();
+                    //itemPiece.name = itemPieceList[itemList[betterItemId].requiredPieceList[1]].name;
+                    //itemPiece.description = itemPieceList[itemList[betterItemId].requiredPieceList[1]].description;
+                    //itemPiece.image = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
+                    //itemPiece.selectedHeroIndex = index;
+
+                    //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Button>().onClick.RemoveAllListeners();
+                    //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
+
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).gameObject.SetActive(true);
+                    i++;
+                }
+                else if (itemPieceList[itemList[betterItemId].requiredPieceList[0]].name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name && myPieceItemList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[0]].name).Count() > 1)
                 {
                     CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
                     Item item = new Item();
@@ -483,6 +533,50 @@ public class GameManager : MonoBehaviour
         else if (myHeroList[itemPiece.selectedHeroIndex].currentItemList.Count + myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Count < 3)
         {
             myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Add(itemPiece);
+
+            if (myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Count > 1)
+            {
+                foreach (Item item in itemList)
+                {
+                    //Debug.Log(item.name);
+                    //Debug.Log(itemPieceList[item.requiredPieceList[0]].name);
+                    //Debug.Log(itemPieceList[item.requiredPieceList[1]].name);
+                    //Debug.Log(myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[0].name);
+
+                    //Debug.Log(myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[1].name);
+
+                    if (myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Count > 0)
+                        if (itemPieceList[item.requiredPieceList[0]].name == myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[0].name && itemPieceList[item.requiredPieceList[1]].name == myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[1].name)
+                        {
+                            //myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Remove(itemPieceList[item.requiredPieceList[0]]);
+                            //myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Remove(itemPieceList[item.requiredPieceList[1]]);
+                            myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Clear();
+                            Item tempItem = new Item();
+                            tempItem.name = item.name;
+                            tempItem.image = item.image;
+                            tempItem.description = item.description;
+                            tempItem.requiredPieceList = item.requiredPieceList;
+                            tempItem.selectedHeroIndex = itemPiece.selectedHeroIndex;
+
+                            myHeroList[itemPiece.selectedHeroIndex].currentItemList.Add(tempItem);
+
+                        }
+                        else if (itemPieceList[item.requiredPieceList[0]].name == myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[1].name && itemPieceList[item.requiredPieceList[1]].name == myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[0].name)
+
+                        {
+                            myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Clear();
+                            Item tempItem = new Item();
+                            tempItem.name = item.name;
+                            tempItem.image = item.image;
+                            tempItem.description = item.description;
+                            tempItem.requiredPieceList = item.requiredPieceList;
+                            tempItem.selectedHeroIndex = itemPiece.selectedHeroIndex;
+
+                            myHeroList[itemPiece.selectedHeroIndex].currentItemList.Add(tempItem);
+                            //myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Clear();
+                        }
+                }
+            }
         }
 
 
@@ -498,7 +592,7 @@ public class GameManager : MonoBehaviour
 
         if (myComplateItemList.Where(x => x.name == item.name).Count() > 0)
         {
-            myComplateItemList.Remove(item);
+            myComplateItemList.Remove(myComplateItemList.Where(x => x.name == item.name).FirstOrDefault());
         }
         else
         {
@@ -523,9 +617,41 @@ public class GameManager : MonoBehaviour
 
         myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Add(itemPiece);
 
+        if (myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Count > 1)
+        {
+            foreach (Item item in itemList)
+            {
+                if (myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Count > 0)
+                    if (itemPieceList[item.requiredPieceList[0]].name == myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[0].name && itemPieceList[item.requiredPieceList[1]].name == myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[1].name)
+                    {
+                        myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Clear();
+                        Item tempItem = new Item();
+                        tempItem.name = item.name;
+                        tempItem.image = item.image;
+                        tempItem.description = item.description;
+                        tempItem.requiredPieceList = item.requiredPieceList;
+                        tempItem.selectedHeroIndex = itemPiece.selectedHeroIndex;
+
+                        myHeroList[itemPiece.selectedHeroIndex].currentItemList.Add(tempItem);
+
+                    }
+                    else if (itemPieceList[item.requiredPieceList[0]].name == myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[1].name && itemPieceList[item.requiredPieceList[1]].name == myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList[0].name)
+                    {
+                        myHeroList[itemPiece.selectedHeroIndex].currentItemPieceList.Clear();
+                        Item tempItem = new Item();
+                        tempItem.name = item.name;
+                        tempItem.image = item.image;
+                        tempItem.description = item.description;
+                        tempItem.requiredPieceList = item.requiredPieceList;
+                        tempItem.selectedHeroIndex = itemPiece.selectedHeroIndex;
+
+                        myHeroList[itemPiece.selectedHeroIndex].currentItemList.Add(tempItem);
+                    }
+            }
+        }
+
         CanvasManager.instance.RefreshListes();
     }
-
 
     void RemoveItemPiece(ItemPiece itemPiece)
     {
@@ -578,7 +704,7 @@ public class GameManager : MonoBehaviour
                 //CanvasManager.instance.teamBuffText.text += "\n" + (int)(tempBestHeroTeam.heroList.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent) + "x " + heroFightStyleList[i].name;
             }
         }
-        Debug.Log(heroes.LastOrDefault().currentBuffCount);
+        //Debug.Log(heroes.LastOrDefault().currentBuffCount);
         suggestionHeroList.Add(heroes.LastOrDefault());
         suggestionHeroList = suggestionHeroList.OrderByDescending(x => x.currentBuffCount).ThenBy(x => x.level).ToList();
     }

@@ -145,13 +145,17 @@ public class CanvasManager : MonoBehaviour
         {
             heroMenuRect.transform.GetChild(i).gameObject.SetActive(false);
         }
-        
+
         if (GameManager.instance.myHeroList.Count > 0)
         {
             for (int i = 0; i < GameManager.instance.suggestionHeroList.Count(); i++)
             {
                 heroMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.suggestionHeroList[i].image;
                 heroMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = GameManager.instance.suggestionHeroList[i].name;
+                heroMenuRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[GameManager.instance.suggestionHeroList[i].HeroGenericType].image;
+                heroMenuRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[GameManager.instance.suggestionHeroList[i].HeroFightStyleList[0]].image;
+
+
 
 
                 Hero hero = GameManager.instance.suggestionHeroList[i];
@@ -168,6 +172,10 @@ public class CanvasManager : MonoBehaviour
             {
                 heroMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.heroList[i].image;
                 heroMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroList[i].name;
+                heroMenuRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[GameManager.instance.heroList[i].HeroGenericType].image;
+
+                Debug.Log(" : " + GameManager.instance.heroList[i].name);
+                heroMenuRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[GameManager.instance.heroList[i].HeroFightStyleList[0]].image;
 
 
                 Hero hero = GameManager.instance.heroList[i];
@@ -216,10 +224,10 @@ public class CanvasManager : MonoBehaviour
             myHeroMenuRect.transform.GetChild(i).gameObject.SetActive(true);
         }
 
-        if (GameManager.instance.myHeroList.Count == 1)
-        {
-            SetSelectedInfoList(0);
-        }
+        //if (GameManager.instance.myHeroList.Count == 1)
+        //{
+        //    SetSelectedInfoList(0);
+        //}
     }
 
     void SetItemPiece()
