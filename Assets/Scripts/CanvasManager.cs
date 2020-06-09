@@ -27,6 +27,9 @@ public class CanvasManager : MonoBehaviour
     public Text teamBuffText;
     public Text PlayerLevelText;
 
+    public GameObject HeroButtonPrefab;
+    public GameObject HeroCardButtonPrefab;
+
     public Button removeHeroButton;
 
     public Text selectedHeroNameText;
@@ -250,13 +253,19 @@ public class CanvasManager : MonoBehaviour
 
         for (int i = 0; i < heroMenuRect.transform.childCount; i++)
         {
-            heroMenuRect.transform.GetChild(i).gameObject.SetActive(false);
+            Destroy(heroMenuRect.transform.GetChild(i).gameObject);
         }
 
         if (GameManager.instance.myHeroList.Count > 0)
         {
+
             for (int i = 0; i < GameManager.instance.suggestionHeroList.Count(); i++)
             {
+                GameObject go = new GameObject();
+                go = Instantiate(HeroButtonPrefab);
+                go.transform.SetParent(heroMenuRect.transform);
+                //go.transform.position = Vector3.zero;
+
                 heroMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.suggestionHeroList[i].image;
                 heroMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = GameManager.instance.suggestionHeroList[i].name;
                 heroMenuRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[GameManager.instance.suggestionHeroList[i].HeroGenericType].image;
@@ -275,8 +284,16 @@ public class CanvasManager : MonoBehaviour
         }
         else
         {
+
+
+
             for (int i = 0; i < GameManager.instance.heroList.Count(); i++)
             {
+                GameObject go = new GameObject();
+                go = Instantiate(HeroButtonPrefab);
+                go.transform.SetParent(heroMenuRect.transform);
+                go.transform.position = Vector3.zero;
+
                 heroMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.heroList[i].image;
                 heroMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroList[i].name;
                 heroMenuRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[GameManager.instance.heroList[i].HeroGenericType].image;
@@ -317,8 +334,12 @@ public class CanvasManager : MonoBehaviour
     {
         for (int i = 0; i < myHeroMenuRect.transform.childCount; i++)
         {
-            myHeroMenuRect.transform.GetChild(i).gameObject.SetActive(false);
+            Destroy(myHeroMenuRect.transform.GetChild(i).gameObject);
         }
+
+        GameObject go = new GameObject();
+        go = Instantiate(HeroCardButtonPrefab);
+        go.transform.SetParent(myHeroMenuRect.transform);
 
         for (int i = 0; i < GameManager.instance.myHeroList.Count; i++)
         {
