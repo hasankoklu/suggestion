@@ -650,7 +650,7 @@ public class GameManager : MonoBehaviour
             tempBestHeroTeamList = bestHeroTeamList.Where(x => x.heroList.Contains(hero)).ToList();
         }
 
-        if (tempBestHeroTeamList.Count > 0 && (tempBestHeroTeamList.FirstOrDefault().winCount + tempBestHeroTeamList.FirstOrDefault().loseCount) > 50)
+        if (tempBestHeroTeamList.Count > 0 && (tempBestHeroTeamList.FirstOrDefault().winCount + tempBestHeroTeamList.FirstOrDefault().loseCount) > 5)
         {
             heroes.LastOrDefault().winRate = (int)(tempBestHeroTeamList.FirstOrDefault().winCount / (tempBestHeroTeamList.FirstOrDefault().winCount + tempBestHeroTeamList.FirstOrDefault().loseCount) * 100);
             Debug.Log("Win Rate : " + heroes.LastOrDefault().winRate);
@@ -684,7 +684,7 @@ public class GameManager : MonoBehaviour
 
 
         suggestionHeroList.Add(heroes.LastOrDefault());
-        suggestionHeroList = suggestionHeroList.OrderByDescending(x => x.currentBuffCount).ThenBy(x => x.level).ToList();
+        suggestionHeroList = suggestionHeroList.OrderByDescending(x => x.winRate).ToList();
     }
 
     public int currentBuffCount;

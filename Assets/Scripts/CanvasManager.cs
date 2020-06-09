@@ -22,6 +22,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject heroTeamSuggestionRect;
     public GameObject itemSuggestionRect;
     public GameObject currentTeamBuffRect;
+    public GameObject askWinLoseRect;
     public GameObject addItemRect;
     public Text teamBuffText;
     public Text PlayerLevelText;
@@ -168,6 +169,29 @@ public class CanvasManager : MonoBehaviour
     public void LoadBestTeamList()
     {
         Debug.Log("GameManager.instance.bestTeamList Geri Yüklenecek.");
+    }
+
+    public void IsHoldButtonClick()
+    {
+        isHold = true;
+    }
+
+    bool isHold = false;
+    public IEnumerator AskWinLoseSystem()
+    {
+        while (GameManager.instance.myHeroList.Count > 1)
+        {
+            if (isHold)
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(1000, 1200));
+                isHold = false;
+            }
+            else
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(150, 210));
+            }
+            askWinLoseRect.SetActive(true);
+        }
     }
 
     #region Dropdown OnValueChange
