@@ -57,6 +57,10 @@ public class GameManager : MonoBehaviour
         //{
         //    Debug.Log(i + " : " + heroList[i].name);
         //}
+        //myPieceItemList.Add(itemPieceList[0]);
+        //myPieceItemList.Add(itemPieceList[0]);
+        //myPieceItemList.Add(itemPieceList[0]);
+        //myPieceItemList.Add(itemPieceList[0]);
     }
 
     public void AddHeroToMyHeroList(Hero hero)
@@ -77,8 +81,7 @@ public class GameManager : MonoBehaviour
             newhero.winRate = hero.winRate;
             myHeroList.Add(newhero);
             myHeroList = myHeroList.OrderBy(x => x.HeroGenericType).ThenByDescending(x => x.level).ToList();
-
-            CanvasManager.instance.SetMyHeroList();
+            
             TheBestHeroTeamSuggestion();
 
             if (CanvasManager.instance.extraItemSuggestionRect.activeSelf)
@@ -131,14 +134,14 @@ public class GameManager : MonoBehaviour
 
         #region ItemSuggest
 
-        for (int k = 0; k < CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).childCount; k++)
+        for (int k = 0; k < myHeroList.Count; k++)
         {
             int i = 0;
             foreach (int betterItemId in myHeroList[index].betterItemIdList)
             {
-                CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
-                CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
-                CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Button>().onClick.RemoveAllListeners();
+                CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+                CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
+                CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Button>().onClick.RemoveAllListeners();
 
                 if (myComplateItemList.Where(x => x.name == itemList[betterItemId].name).Count() > 0)
                 {
@@ -149,23 +152,24 @@ public class GameManager : MonoBehaviour
                     item.requiredPieceList = itemList[betterItemId].requiredPieceList;
                     item.Type = itemList[betterItemId].Type;
                     item.selectedHeroIndex = index;
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuyItem(item));
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().color =
-                        new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.r,
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.g,
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.b, 1f);
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuyItem(item));
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color =
+                        new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.r,
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.g,
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.b, 1f);
+
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
                     //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = itemList[betterItemId].description;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color = Color.white;
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color = Color.white;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color = Color.white;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color = Color.white;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).gameObject.SetActive(true);
+                    //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).gameObject.SetActive(true);
                     i++;
                 }
                 else if (itemPieceList[itemList[betterItemId].requiredPieceList[0]].name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name && myPieceItemList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[0]].name).Count() > 1)
@@ -177,21 +181,21 @@ public class GameManager : MonoBehaviour
                     item.requiredPieceList = itemList[betterItemId].requiredPieceList;
                     item.Type = itemList[betterItemId].Type;
                     item.selectedHeroIndex = index;
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuyItem(item));
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuyItem(item));
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().color =
-                        new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.r,
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.g,
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.b, 1f);
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color =
+                        new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.r,
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.g,
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.b, 1f);
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
                     //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = itemList[betterItemId].description;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color = Color.white;
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color = Color.white;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color = Color.white;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color = Color.white;
 
                     ItemPiece itemPiece = new ItemPiece();
                     itemPiece.name = itemPieceList[itemList[betterItemId].requiredPieceList[0]].name;
@@ -200,7 +204,7 @@ public class GameManager : MonoBehaviour
                     itemPiece.selectedHeroIndex = index;
 
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
 
                     ItemPiece itemPiece2 = new ItemPiece();
                     itemPiece2.name = itemPieceList[itemList[betterItemId].requiredPieceList[1]].name;
@@ -208,9 +212,9 @@ public class GameManager : MonoBehaviour
                     itemPiece2.image = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
                     itemPiece2.selectedHeroIndex = index;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece2));
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece2));
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).gameObject.SetActive(true);
+                    //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).gameObject.SetActive(true);
                     i++;
 
                 }
@@ -224,21 +228,21 @@ public class GameManager : MonoBehaviour
                     item.requiredPieceList = itemList[betterItemId].requiredPieceList;
                     item.Type = itemList[betterItemId].Type;
                     item.selectedHeroIndex = index;
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuyItem(item));
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuyItem(item));
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().color =
-                        new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.r,
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.g,
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.b, 1f);
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color =
+                        new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.r,
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.g,
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.b, 1f);
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
                     //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = itemList[betterItemId].description;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color = Color.white;
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color = Color.white;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color = Color.white;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color = Color.white;
 
                     ItemPiece itemPiece = new ItemPiece();
                     itemPiece.name = itemPieceList[itemList[betterItemId].requiredPieceList[0]].name;
@@ -246,7 +250,7 @@ public class GameManager : MonoBehaviour
                     itemPiece.image = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
                     itemPiece.selectedHeroIndex = index;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
 
                     ItemPiece itemPiece2 = new ItemPiece();
                     itemPiece2.name = itemPieceList[itemList[betterItemId].requiredPieceList[1]].name;
@@ -254,42 +258,44 @@ public class GameManager : MonoBehaviour
                     itemPiece2.image = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
                     itemPiece2.selectedHeroIndex = index;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece2));
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece2));
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).gameObject.SetActive(true);
+                    //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).gameObject.SetActive(true);
 
 
                     i++;
                 }
                 else
                 {
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.r,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.g,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetComponent<Image>().color.b, 0.65f);
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color =
+                         new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.r,
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.g,
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color.b, 0.65f);
 
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
                     //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = itemList[betterItemId].description;
 
                     #region Color
                     if (myPieceItemList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[0]].name).Count() == 0)
                     {
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color.r,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color.g,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color.b, 0.65f);
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color =
+                         new Color(
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color.r,
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color.g,
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color.b, 0.65f);
 
-                        //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Button>().onClick.RemoveAllListeners();
                     }
                     else
                     {
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color.r,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color.g,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().color.b, 1f);
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color =
+                         new Color(
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color.r,
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color.g,
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().color.b, 1f);
 
                         ItemPiece itemPiece = new ItemPiece();
                         itemPiece.name = itemPieceList[itemList[betterItemId].requiredPieceList[0]].name;
@@ -297,31 +303,35 @@ public class GameManager : MonoBehaviour
                         itemPiece.image = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
                         itemPiece.selectedHeroIndex = index;
 
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
 
                     }
 
                     if (myPieceItemList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name).Count() == 0)
                     {
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color.r,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color.g,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color.b, 0.65f);
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color =
+                         new Color(
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color.r,
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color.g,
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color.b, 0.65f);
 
                     }
                     else if (itemPieceList[itemList[betterItemId].requiredPieceList[0]].name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name && myPieceItemList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name).Count() == 1)
                     {
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color.r,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color.g,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color.b, 0.65f);
+                        Debug.Log("sa");
+                        //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetComponent<Image>().color =
+                        // new Color(
+                        // CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetComponent<Image>().color.r,
+                        // CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetComponent<Image>().color.g,
+                        // CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetComponent<Image>().color.b, 0.65f);
                     }
                     else
                     {
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color.r,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color.g,
-                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().color.b, 1f);
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color =
+                         new Color(
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color.r,
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color.g,
+                         CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().color.b, 0.1f);
 
                         ItemPiece itemPiece = new ItemPiece();
                         itemPiece.name = itemPieceList[itemList[betterItemId].requiredPieceList[1]].name;
@@ -329,17 +339,17 @@ public class GameManager : MonoBehaviour
                         itemPiece.image = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
                         itemPiece.selectedHeroIndex = index;
 
-                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
+                        CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Button>().onClick.AddListener(() => BuyPieceItem(itemPiece));
 
                     }
 
                     #endregion
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
+                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
 
-                    CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(i).gameObject.SetActive(true);
+                    //CanvasManager.instance.myHeroMenuRect.transform.GetChild(index).GetChild(2).GetChild(0).GetChild(i).gameObject.SetActive(true);
                     i++;
                 }
             }
@@ -635,8 +645,7 @@ public class GameManager : MonoBehaviour
     }
 
     List<Hero> tempHeroList = new List<Hero>();
-
-
+    
     public List<string> currentBuffNameList;
     public void ArrangeSuggestionHeroList(List<Hero> heroes)
     {
@@ -680,9 +689,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Win Rate : " + heroes.LastOrDefault().winRate);
         }
 
-
-
-
         suggestionHeroList.Add(heroes.LastOrDefault());
         suggestionHeroList = suggestionHeroList.OrderByDescending(x => x.winRate).ToList();
     }
@@ -691,7 +697,6 @@ public class GameManager : MonoBehaviour
     public List<BestHeroTeam> TheBestHeroes;
     public void TheBestHeroTeamSuggestion()
     {
-
         suggestionHeroList.Clear();
 
         foreach (Hero hero in heroList)

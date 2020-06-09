@@ -25,8 +25,8 @@ public class PlayfabManager : MonoBehaviour
 
     private void OnLoginFailure(PlayFabError error)
     {
-        Debug.LogWarning("Something went wrong with your first API call.  :(");
-        Debug.LogError("Here's some debug information:");
-        Debug.LogError(error.GenerateErrorReport());
+        //Debug.LogWarning("Something went wrong with your first API call.  :(");
+        //Debug.LogError("Here's some debug information:");
+        //Debug.LogError(error.GenerateErrorReport());
     }
 }
