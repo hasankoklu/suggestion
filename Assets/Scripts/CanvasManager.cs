@@ -65,7 +65,6 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-
     public void RefreshListes()
     {
         SetItemPiece();
@@ -107,6 +106,68 @@ public class CanvasManager : MonoBehaviour
             GameManager.instance.playerLevel--;
             PlayerLevelText.text = GameManager.instance.playerLevel.ToString();
         }
+    }
+
+    List<BestHeroTeam> tempBestHeroTeamList = new List<BestHeroTeam>();
+
+    public void TeamWon()
+    {
+
+        LoadBestTeamList();
+        tempBestHeroTeamList = GameManager.instance.bestHeroTeamList;
+        foreach (Hero hero in GameManager.instance.myHeroList)
+        {
+            tempBestHeroTeamList = GameManager.instance.bestHeroTeamList.Where(x => x.heroList.Contains(hero)).ToList();
+        }
+
+        if (tempBestHeroTeamList.Count > 0)
+        {
+            GameManager.instance.bestHeroTeamList.Where(x => x == tempBestHeroTeamList.FirstOrDefault()).FirstOrDefault().winCount++;
+        }
+        else
+        {
+            BestHeroTeam tempBestHeroTeam = new BestHeroTeam();
+            tempBestHeroTeam.winCount = 1;
+            tempBestHeroTeam.heroList = GameManager.instance.myHeroList;
+
+            GameManager.instance.theBestTeamList.Add(tempBestHeroTeam);
+
+        }
+        SaveBestTeamList();
+    }
+
+    public void TeamLost()
+    {
+        LoadBestTeamList();
+        tempBestHeroTeamList = GameManager.instance.bestHeroTeamList;
+        foreach (Hero hero in GameManager.instance.myHeroList)
+        {
+            tempBestHeroTeamList = GameManager.instance.bestHeroTeamList.Where(x => x.heroList.Contains(hero)).ToList();
+        }
+
+        if (tempBestHeroTeamList.Count > 0)
+        {
+            GameManager.instance.bestHeroTeamList.Where(x => x == tempBestHeroTeamList.FirstOrDefault()).FirstOrDefault().winCount--;
+        }
+        else
+        {
+            BestHeroTeam tempBestHeroTeam = new BestHeroTeam();
+            tempBestHeroTeam.loseCount = 1;
+            tempBestHeroTeam.heroList = GameManager.instance.myHeroList;
+
+            GameManager.instance.theBestTeamList.Add(tempBestHeroTeam);
+        }
+        SaveBestTeamList();
+    }
+
+    public void SaveBestTeamList()
+    {
+        Debug.Log("GameManager.instance.bestTeamList Kayıt edilecek.");
+    }
+
+    public void LoadBestTeamList()
+    {
+        Debug.Log("GameManager.instance.bestTeamList Geri Yüklenecek.");
     }
 
     #region Dropdown OnValueChange
@@ -177,7 +238,7 @@ public class CanvasManager : MonoBehaviour
                 heroMenuRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[GameManager.instance.suggestionHeroList[i].HeroGenericType].image;
                 heroMenuRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[GameManager.instance.suggestionHeroList[i].HeroFightStyleList[0]].image;
 
-
+                heroMenuRect.transform.GetChild(i).GetChild(3).GetComponent<Text>().text = "%" + GameManager.instance.heroList[i].winRate.ToString();
 
 
                 Hero hero = GameManager.instance.suggestionHeroList[i];
@@ -197,6 +258,8 @@ public class CanvasManager : MonoBehaviour
                 heroMenuRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[GameManager.instance.heroList[i].HeroGenericType].image;
 
                 heroMenuRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[GameManager.instance.heroList[i].HeroFightStyleList[0]].image;
+
+                heroMenuRect.transform.GetChild(i).GetChild(3).GetComponent<Text>().text = "%" + GameManager.instance.heroList[i].winRate.ToString();
 
 
                 Hero hero = GameManager.instance.heroList[i];
@@ -259,11 +322,6 @@ public class CanvasManager : MonoBehaviour
                 myHeroMenuRect.transform.GetChild(i).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
 
-
-
-            //myHeroMenuRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().text = GameManager.instance.myHeroList[i].name;
-            //myHeroMenuRect.transform.GetChild(i).GetChild(1).GetChild(0).GetComponent<Text>().text = GameManager.instance.myHeroList[i].name;
-
             GameManager.instance.currentBuffNameList.Clear();
             for (int t = 0; t < currentTeamBuffRect.transform.childCount; t++)
             {
@@ -314,10 +372,6 @@ public class CanvasManager : MonoBehaviour
             myHeroMenuRect.transform.GetChild(i).gameObject.SetActive(true);
         }
 
-        //if (GameManager.instance.myHeroList.Count == 1)
-        //{
-        //    SetSelectedInfoList(0);
-        //}
     }
 
     void SetItemPiece()

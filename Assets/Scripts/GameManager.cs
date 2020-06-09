@@ -74,23 +74,16 @@ public class GameManager : MonoBehaviour
             newhero.HeroGenericType = hero.HeroGenericType;
             newhero.cardImage = hero.cardImage;
             newhero.level = hero.level;
+            newhero.winRate = hero.winRate;
             myHeroList.Add(newhero);
             myHeroList = myHeroList.OrderBy(x => x.HeroGenericType).ThenByDescending(x => x.level).ToList();
 
             CanvasManager.instance.SetMyHeroList();
-            //if (CanvasManager.instance.suggestionRect.activeSelf)
-            //    MakeSuggestionforSelectedHero();
             TheBestHeroTeamSuggestion();
 
             if (CanvasManager.instance.extraItemSuggestionRect.activeSelf)
                 ItemSuggestButtonOnClick();
         }
-
-        //if (!CanvasManager.instance.suggestionRect.activeSelf)
-        //    CanvasManager.instance.suggestionRect.SetActive(true);
-
-        //if (!CanvasManager.instance.suggestionRect.activeSelf)
-        //    CanvasManager.instance.suggestionRect.SetActive(true);
     }
 
     public void SetHeroItems(int index)
@@ -648,40 +641,48 @@ public class GameManager : MonoBehaviour
     public void ArrangeSuggestionHeroList(List<Hero> heroes)
     {
         heroes.LastOrDefault().currentBuffCount = 0;
+        heroes.LastOrDefault().winRate = 0;
         currentBuffNameList.Clear();
-        //CanvasManager.instance.teamBuffText.text = "";
-        //string heronames = "";
-        //foreach (Hero hero in heroes)
-        //{
-        //    heronames += " : \n" + hero.name;
-        //    tempBestHeroTeam.heroList.Add(hero);
-        //}
 
-
-        for (int i = 0; i < heroGenericTypeList.Count; i++)
+        List<BestHeroTeam> tempBestHeroTeamList = new List<BestHeroTeam>();
+        foreach (Hero hero in heroes) // remember.
         {
-            if (heroes.Where(x => x.HeroGenericType == i).Count() / heroGenericTypeList[i].exponent >= 0)
-            {
-                heroes.LastOrDefault().currentBuffCount += (int)(heroes.Where(x => x.HeroGenericType == i).Count() / heroGenericTypeList[i].exponent);
-
-
-                //CanvasManager.instance.teamBuffText.text += "\n" + (int)(tempBestHeroTeam.heroList.Where(x => x.HeroGenericType == i).Count() / heroGenericTypeList[i].exponent) + "x " + heroFightStyleList[i].name;
-            }
+            tempBestHeroTeamList = bestHeroTeamList.Where(x => x.heroList.Contains(hero)).ToList();
         }
 
-        for (int i = 0; i < heroFightStyleList.Count; i++)
+        if (tempBestHeroTeamList.Count > 0 && (tempBestHeroTeamList.FirstOrDefault().winCount + tempBestHeroTeamList.FirstOrDefault().loseCount) > 50)
         {
-
-            if (heroes.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent >= 0)
-            {
-                heroes.LastOrDefault().currentBuffCount += (int)(heroes.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent);
-
-                //currentBuffNameList.Add(heroFightStyleList[i].name);
-
-                //CanvasManager.instance.teamBuffText.text += "\n" + (int)(tempBestHeroTeam.heroList.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent) + "x " + heroFightStyleList[i].name;
-            }
+            heroes.LastOrDefault().winRate = (int)(tempBestHeroTeamList.FirstOrDefault().winCount / (tempBestHeroTeamList.FirstOrDefault().winCount + tempBestHeroTeamList.FirstOrDefault().loseCount) * 100);
+            Debug.Log("Win Rate : " + heroes.LastOrDefault().winRate);
         }
-        //Debug.Log(heroes.LastOrDefault().currentBuffCount);
+        else
+        {
+            for (int i = 0; i < heroGenericTypeList.Count; i++)
+            {
+                if (heroes.Where(x => x.HeroGenericType == i).Count() / heroGenericTypeList[i].exponent >= 0)
+                {
+                    heroes.LastOrDefault().currentBuffCount += (int)(heroes.Where(x => x.HeroGenericType == i).Count() / heroGenericTypeList[i].exponent);
+
+
+                }
+            }
+
+            for (int i = 0; i < heroFightStyleList.Count; i++)
+            {
+
+                if (heroes.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent >= 0)
+                {
+                    heroes.LastOrDefault().currentBuffCount += (int)(heroes.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent);
+                }
+            }
+
+            heroes.LastOrDefault().winRate = heroes.LastOrDefault().currentBuffCount * 10;
+            Debug.Log("Win Rate : " + heroes.LastOrDefault().winRate);
+        }
+
+
+
+
         suggestionHeroList.Add(heroes.LastOrDefault());
         suggestionHeroList = suggestionHeroList.OrderByDescending(x => x.currentBuffCount).ThenBy(x => x.level).ToList();
     }
@@ -726,34 +727,6 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Read_TheBestHeroes()
     {
-        //if (Application.internetReachability != NetworkReachability.NotReachable)
-        //{
-        //    UnityWebRequest uwr = UnityWebRequest.Get("http://cebur.fun/Suggestion" + "/TheBestHeroes.txt");
-        //    yield return uwr.SendWebRequest();
-        //    if (uwr.isNetworkError)
-        //    {
-        //        Debug.Log("Error");
-        //    }
-        //    else
-        //    {
-        //        var Result = JsonConvert.DeserializeObject<List<Hero>>(uwr.downloadHandler.text, new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate });
-        //        TheBestHeroes = new List<Hero>();
-        //        TheBestHeroes = Result;
-        //        ExtendedPlayerPrefs.SetBool("TheBestHeroes", true);
-        //        ExtendedPlayerPrefs.Flush();
-        //        try
-        //        {
-        //            System.IO.File.WriteAllText(Application.persistentDataPath + "/TheBestHeroes.txt", uwr.downloadHandler.text);
-        //        }
-        //        catch (System.Exception e)
-        //        {
-        //            Debug.Log(e.Message);
-        //            throw;
-        //        }
-        //    }
-        //}
-        //else if (ExtendedPlayerPrefs.GetBool("TheBestHeroes"))
-        //{
         string path = Application.persistentDataPath + "/TheBestHeroes.txt";
         if (!string.IsNullOrEmpty(path))
         {
@@ -791,6 +764,7 @@ public class GameManager : MonoBehaviour
         public List<Item> currentItemList;
         public List<ItemPiece> currentItemPieceList;
         public int currentBuffCount;
+        public float winRate;
         public string description;
     }
 
@@ -845,198 +819,3 @@ public class GameManager : MonoBehaviour
     #endregion
 
 }
-
-
-
-/*
- 
-    public void MakeSuggestionforSelectedHero()
-    {
-        Hero myHero;
-
-        #region ClearImages
-
-        for (int k = 1; k < CanvasManager.instance.suggestionRect.transform.childCount; k++)
-        {
-            CanvasManager.instance.suggestionRect.transform.GetChild(k).gameObject.SetActive(false);
-            for (int j = 0; j < CanvasManager.instance.suggestionRect.transform.GetChild(k).transform.childCount; j++)
-            {
-                CanvasManager.instance.suggestionRect.transform.GetChild(k).GetChild(j).GetComponent<Image>().sprite = null;
-            }
-        }
-
-        #endregion
-
-        if (myHeroList.Count != 0)
-        {
-            myHero = myHeroList[selectedHeroIndex];
-
-            CanvasManager.instance.suggestionRect.transform.GetChild(0).GetComponent<Image>().sprite = myHero.image;
-            //CanvasManager.instance.removeHeroButton.onClick.RemoveAllListeners();
-            //CanvasManager.instance.removeHeroButton.onClick.AddListener(() => CanvasManager.instance.RemoveHeroButtonOnClick(selectedHeroIndex));
-
-            if (myHero.betterItemIdList == null) // Look here
-                return;
-
-
-            //for (int q = 0; q < CanvasManager.instance.myHeroItemsRect.transform.childCount - 1; q++)
-            //{
-            //    CanvasManager.instance.myHeroItemsRect.transform.GetChild(q).GetComponent<Image>().sprite = null;
-            //}
-
-            for (int p = 0; p < myHero.currentItemList.Count; p++)
-            {
-                Debug.Log("curren item");
-                //CanvasManager.instance.myHeroItemsRect.transform.GetChild(p).GetComponent<Image>().sprite = myHero.currentItemList[p].image;
-            }
-
-
-            //for (int t = 0; t < CanvasManager.instance.bestItemsRect.transform.childCount - 1; t++)
-            //{
-            //    CanvasManager.instance.bestItemsRect.transform.GetChild(t).GetComponent<Image>().sprite = itemList[myHero.betterItemIdList[t]].image;
-            //    CanvasManager.instance.bestItemsRect.transform.GetChild(t).GetChild(0).GetComponent<Text>().text = itemList[myHero.betterItemIdList[t]].description;
-            //}
-
-            #region ItemSuggest
-
-
-            int i = 0;
-            foreach (int betterItemId in myHero.betterItemIdList)
-            {
-                if (i > 3)
-                    return;
-
-                if (itemPieceList[itemList[betterItemId].requiredPieceList[0]].name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name && myItemPieceList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[0]].name).Count() > 1)
-                {
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
-                    Item item = new Item();
-                    item.name = itemList[betterItemId].name;
-                    item.image = itemList[betterItemId].image;
-                    item.description = itemList[betterItemId].description;
-                    item.requiredPieceList = itemList[betterItemId].requiredPieceList;
-                    item.Type = itemList[betterItemId].Type;
-                    item.selectedHeroIndex = selectedHeroIndex;
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Button>().onClick.AddListener(() => TakeItem(item));
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(0).GetComponent<Image>().color =
-                        new Color(CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Image>().color.r,
-                        CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Image>().color.g,
-                        CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Image>().color.b, 1f);
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = itemList[betterItemId].description;
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color = Color.white;
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color = Color.white;
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).gameObject.SetActive(true);
-                    i++;
-
-                }
-                else if (itemPieceList[itemList[betterItemId].requiredPieceList[0]].name != itemPieceList[itemList[betterItemId].requiredPieceList[1]].name && myItemPieceList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[0]].name).Count() > 0 && myItemPieceList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name).Count() > 0)
-                {
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
-                    Item item = new Item();
-                    item.name = itemList[betterItemId].name;
-                    item.image = itemList[betterItemId].image;
-                    item.description = itemList[betterItemId].description;
-                    item.requiredPieceList = itemList[betterItemId].requiredPieceList;
-                    item.Type = itemList[betterItemId].Type;
-                    item.selectedHeroIndex = selectedHeroIndex;
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Button>().onClick.AddListener(() => TakeItem(item));
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(0).GetComponent<Image>().color =
-                        new Color(CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Image>().color.r,
-                        CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Image>().color.g,
-                        CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Image>().color.b, 1f);
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = itemList[betterItemId].description;
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color = Color.white;
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color = Color.white;
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).gameObject.SetActive(true);
-
-
-                    i++;
-                }
-                else
-                {
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(0).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Image>().color.r,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Image>().color.g,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetComponent<Image>().color.b, 0.5f);
-
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = itemList[betterItemId].image;
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = itemList[betterItemId].description;
-
-                    #region Color
-                    if (myItemPieceList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[0]].name).Count() == 0)
-                    {
-                        CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color.r,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color.g,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color.b, 0.5f);
-                    }
-                    else
-                    {
-                        CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color.r,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color.g,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().color.b, 1f);
-                    }
-
-                    if (myItemPieceList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name).Count() == 0)
-                    {
-                        CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color.r,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color.g,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color.b, 0.5f);
-                    }
-                    else if (itemPieceList[itemList[betterItemId].requiredPieceList[0]].name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name && myItemPieceList.Where(x => x.name == itemPieceList[itemList[betterItemId].requiredPieceList[1]].name).Count() == 1)
-                    {
-                        CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color.r,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color.g,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color.b, 0.5f);
-                    }
-                    else
-                    {
-                        CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color =
-                         new Color(CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color.r,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color.g,
-                         CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().color.b, 1f);
-                    }
-
-                    #endregion
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[0]].image;
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).GetChild(2).GetComponent<Image>().sprite = itemPieceList[itemList[betterItemId].requiredPieceList[1]].image;
-
-
-                    CanvasManager.instance.suggestionRect.transform.GetChild(i).gameObject.SetActive(true);
-                    i++;
-                }
-            }
-
-            #endregion
-
-        }
-        else
-        {
-            //CanvasManager.instance.selectedInfoRect.SetActive(false);
-            CanvasManager.instance.suggestionRect.SetActive(false);
-        }
-    }
- * */
