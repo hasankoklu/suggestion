@@ -24,6 +24,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject currentTeamBuffRect;
     public GameObject addItemRect;
     public Text teamBuffText;
+    public Text PlayerLevelText;
 
     public Button removeHeroButton;
 
@@ -93,6 +94,20 @@ public class CanvasManager : MonoBehaviour
         GameManager.instance.selectedHeroIndex = i;
     }
 
+    public void PlayerLevelIncreaseButtonClick()
+    {
+        GameManager.instance.playerLevel++;
+        PlayerLevelText.text = GameManager.instance.playerLevel.ToString();
+    }
+
+    public void PlayerLevelDecreaseButtonClick()
+    {
+        if (GameManager.instance.playerLevel > 1)
+        {
+            GameManager.instance.playerLevel--;
+            PlayerLevelText.text = GameManager.instance.playerLevel.ToString();
+        }
+    }
 
     #region Dropdown OnValueChange
 

@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     public List<BestHeroTeam> theBestTeamList;
 
+    public int playerLevel = 1;
+
     public int selectedHeroIndex = -1;
 
     #endregion
