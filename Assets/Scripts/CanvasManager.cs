@@ -30,6 +30,10 @@ public class CanvasManager : MonoBehaviour
     public GameObject ItemSuggestionItemPrefab;
     public GameObject HeroButtonPrefab;
     public GameObject HeroCardButtonPrefab;
+    public GameObject AddIPieceItemButtonPrefab;
+    public GameObject AddComplateItemButtonPrefab;
+    public GameObject currentBuffItemPrefab;
+
 
     public Button removeHeroButton;
 
@@ -84,12 +88,7 @@ public class CanvasManager : MonoBehaviour
         GameManager.instance.myHeroList.Remove(hero);
         RefreshListes();
     }
-
-    public void SetSelectedHeroIndex(int i)
-    {
-        GameManager.instance.selectedHeroIndex = i;
-    }
-
+    
     public void PlayerLevelIncreaseButtonClick()
     {
         GameManager.instance.playerLevel++;
@@ -282,6 +281,49 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
+    void SetItemPiece()
+    {
+        foreach (ItemPiece itemPiece in GameManager.instance.itemPieceList)
+        {
+            itemPiece.gameObject = Instantiate(AddIPieceItemButtonPrefab);
+            //itemPiece.gameObject.transform.SetParent();
+
+            itemPiece.gameObject.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.TakePieceItem(itemPiece));
+
+            itemPiece.gameObject.GetComponent<Image>().sprite = itemPiece.image;
+
+            if (GameManager.instance.myPieceItemList.Where(x => x.name == itemPiece.name).FirstOrDefault() != null)
+                itemPiece.gameObject.transform.GetChild(0).GetComponent<Text>().text =
+                    GameManager.instance.myPieceItemList.Where(x => x.name == itemPiece.name).Count().ToString();
+            else
+            {
+                itemPiece.gameObject.transform.GetChild(0).GetComponent<Text>().text = "0";
+            }
+        }
+
+    }
+
+    void SetComplateItem()
+    {
+        foreach (Item item in GameManager.instance.itemList)
+        {
+            item.gameObject = Instantiate(AddComplateItemButtonPrefab);
+            //item.gameObject.transform.SetParent();
+
+            item.gameObject.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.TakeItem(item));
+
+            item.gameObject.GetComponent<Image>().sprite = item.image;
+
+            //if (GameManager.instance.myComplateItemList.Where(x => x.name == item.name).FirstOrDefault() != null)
+            //    complateItemMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text =
+            //        GameManager.instance.myComplateItemList.Where(x => x.name == item.name).Count().ToString();
+            //else
+            //{
+            //    item.gameObject.transform.GetChild(0).GetComponent<Text>().text = "0";
+            //}
+        }
+    }
+
     #endregion
 
     #region MyListsArrangement
@@ -338,6 +380,7 @@ public class CanvasManager : MonoBehaviour
 
 
             GameManager.instance.SetHeroItems(hero);
+            
             #region Current Buff System
 
             GameManager.instance.currentBuffNameList.Clear();
@@ -367,74 +410,31 @@ public class CanvasManager : MonoBehaviour
 
             for (int i = 0; i < currentTeamBuffRect.transform.childCount; i++)
             {
-                currentTeamBuffRect.transform.GetChild(i).gameObject.SetActive(false);
+
+                Destroy(currentTeamBuffRect.transform.GetChild(i));
             }
 
-            for (int t = 0; t < GameManager.instance.currentBuffNameList.Count; t++)
-            {
-                if (GameManager.instance.heroGenericTypeList.Where(x => x.name == GameManager.instance.currentBuffNameList[t]).Count() != 0)
-                {
-                    currentTeamBuffRect.transform.GetChild(t).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList.Where(x => x.name == GameManager.instance.currentBuffNameList[t]).FirstOrDefault().image;
-                }
-                else
-                {
-                    currentTeamBuffRect.transform.GetChild(t).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList.Where(x => x.name == GameManager.instance.currentBuffNameList[t]).FirstOrDefault().image; ;
-                }
+            //foreach (string buffName in GameManager.instance.currentBuffNameList)
+            //{
+            //    if (GameManager.instance.heroGenericTypeList.Where(x => x.name == buffName).Count() != 0)
+            //    {
+            //        currentTeamBuffRect.transform.GetChild(t).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList.Where(x => x.name == buffName).FirstOrDefault().image;
+            //    }
+            //    else
+            //    {
+            //        currentTeamBuffRect.transform.GetChild(t).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList.Where(x => x.name == buffName).FirstOrDefault().image; ;
+            //    }
 
-                currentTeamBuffRect.transform.GetChild(t).gameObject.SetActive(true);
-            }
+            //    currentTeamBuffRect.transform.GetChild(t).gameObject.SetActive(true);
+            //}
+            
 
             #endregion
 
         }
 
     }
-
-    void SetItemPiece()
-    {
-        for (int i = 0; i < pieceItemMenuRect.transform.childCount; i++)
-        {
-
-            pieceItemMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
-
-            ItemPiece itemPiece = GameManager.instance.itemPieceList[i];
-            pieceItemMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.AddListener(() => GameManager.instance.TakePieceItem(itemPiece));
-
-            pieceItemMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.itemPieceList[i].image;
-
-            if (GameManager.instance.myPieceItemList.Where(x => x.name == GameManager.instance.itemPieceList[i].name).FirstOrDefault() != null)
-                pieceItemMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text =
-                    GameManager.instance.myPieceItemList.Where(x => x.name == GameManager.instance.itemPieceList[i].name).Count().ToString();
-            else
-            {
-                pieceItemMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = "0";
-            }
-        }
-
-    }
-
-    void SetComplateItem()
-    {
-        for (int i = 0; i < complateItemMenuRect.transform.childCount; i++)
-        {
-
-            complateItemMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
-            Item item = GameManager.instance.itemList[i];
-            complateItemMenuRect.transform.GetChild(i).GetComponent<Button>().onClick.AddListener(() => GameManager.instance.TakeItem(item));
-
-            complateItemMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.itemList[i].image;
-
-            if (GameManager.instance.myComplateItemList.Where(x => x.name == GameManager.instance.itemList[i].name).FirstOrDefault() != null)
-                complateItemMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text =
-                    GameManager.instance.myComplateItemList.Where(x => x.name == GameManager.instance.itemList[i].name).Count().ToString();
-            else
-            {
-                complateItemMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = "0";
-            }
-        }
-    }
-
-
+    
     #endregion
 
 }

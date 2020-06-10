@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         foreach (Item betterItem in hero.betterItemList)
         {
             betterItem.gameObject = Instantiate(CanvasManager.instance.ItemSuggestionItemPrefab);
-            betterItem.gameObject.transform.SetParent(hero.gameObject.transform.GetChild(2).GetChild(0).transform);
+            betterItem.gameObject.transform.SetParent(hero.gameObject.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).transform);
 
             if (myComplateItemList.Where(x => x.name == betterItem.name).Count() > 0)
             {
