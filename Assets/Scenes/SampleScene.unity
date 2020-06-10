@@ -254,6 +254,9 @@ MonoBehaviour:
     type: 3}
   HeroCardButtonPrefab: {fileID: 4308393382489731400, guid: 6c44f7b6e775ba243886ebf4ffd98828,
     type: 3}
+  AddIPieceItemButtonPrefab: {fileID: 0}
+  AddComplateItemButtonPrefab: {fileID: 0}
+  currentBuffItemPrefab: {fileID: 0}
   removeHeroButton: {fileID: 0}
   selectedHeroNameText: {fileID: 0}
   myHeroItemsRect: {fileID: 0}
@@ -1079,7 +1082,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.001659088, y: 0}
+  m_AnchoredPosition: {x: -0.000040915194, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &457748524
