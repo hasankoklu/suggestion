@@ -27,6 +27,7 @@ public class CanvasManager : MonoBehaviour
     public Text teamBuffText;
     public Text PlayerLevelText;
 
+    public GameObject ItemSuggestionItemPrefab;
     public GameObject HeroButtonPrefab;
     public GameObject HeroCardButtonPrefab;
 
@@ -74,16 +75,13 @@ public class CanvasManager : MonoBehaviour
         SetItemPiece();
         SetComplateItem();
         SetHeroList();
-        SetMyHeroList();
+        SetMyHeroList(GameManager.instance.myHeroList);
 
-        if (extraItemSuggestionRect.activeInHierarchy)
-            GameManager.instance.ItemSuggestButtonOnClick();
     }
 
-    public void RemoveHeroButtonOnClick(int index)
+    public void RemoveHeroButtonOnClick(Hero hero)
     {
-        GameManager.instance.myHeroList.Remove(GameManager.instance.myHeroList[index]);
-        //selectedInfoRect.SetActive(false);
+        GameManager.instance.myHeroList.Remove(hero);
         RefreshListes();
     }
 
@@ -221,10 +219,7 @@ public class CanvasManager : MonoBehaviour
     public void AddItemPieceToMyItemPieceList(int index)
     {
         GameManager.instance.myPieceItemList.Add(GameManager.instance.itemPieceList[index]);
-        //SetMyItemPiece();
 
-        if (extraItemSuggestionRect.activeInHierarchy)
-            GameManager.instance.ItemSuggestButtonOnClick();
     }
 
     public void RemoveItemPieceToMyItemPieceList(int index)
@@ -233,9 +228,6 @@ public class CanvasManager : MonoBehaviour
             GameManager.instance.myPieceItemList.Where(x => x.name == GameManager.instance.itemPieceList[index].name).FirstOrDefault()
             );
         //SetMyItemPiece();
-
-        if (extraItemSuggestionRect.activeInHierarchy)
-            GameManager.instance.ItemSuggestButtonOnClick();
     }
 
     #endregion
@@ -253,45 +245,39 @@ public class CanvasManager : MonoBehaviour
 
         if (GameManager.instance.myHeroList.Count > 0)
         {
-            for (int i = 0; i < GameManager.instance.suggestionHeroList.Count(); i++)
+
+            foreach (Hero hero in GameManager.instance.suggestionHeroList)
             {
-                GameObject go = new GameObject();
-                go = Instantiate(HeroButtonPrefab);
-                go.transform.SetParent(heroMenuRect.transform);
+                Hero myHero = new Hero();
+                myHero = hero;
+                myHero.gameObject = Instantiate(HeroButtonPrefab);
+                myHero.gameObject.transform.SetParent(heroMenuRect.transform);
+                myHero.gameObject.GetComponent<Image>().sprite = hero.image;
+                myHero.gameObject.transform.GetChild(0).GetComponent<Text>().text = hero.name;
+                myHero.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[hero.HeroGenericType].image;
+                myHero.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[hero.HeroFightStyleList[0]].image;
+                myHero.gameObject.transform.GetChild(3).GetComponent<Text>().text = "%" + hero.winRate.ToString();
 
-                go.GetComponent<Image>().sprite = GameManager.instance.suggestionHeroList[i].image;
-                go.transform.GetChild(0).GetComponent<Text>().text = GameManager.instance.suggestionHeroList[i].name;
-                go.transform.GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[GameManager.instance.suggestionHeroList[i].HeroGenericType].image;
-                go.transform.GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[GameManager.instance.suggestionHeroList[i].HeroFightStyleList[0]].image;
-
-                go.transform.GetChild(3).GetComponent<Text>().text = "%" + GameManager.instance.heroList[i].winRate.ToString();
-
-
-                Hero hero = GameManager.instance.suggestionHeroList[i];
-
-
-                go.GetComponent<Button>().onClick.RemoveAllListeners();
-                go.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.AddHeroToMyHeroList(hero));
-
+                myHero.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+                myHero.gameObject.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.AddHeroToMyHeroList(myHero));
             }
         }
         else
         {
-            for (int i = 0; i < GameManager.instance.heroList.Count(); i++)
+            foreach (Hero hero in GameManager.instance.heroList)
             {
-                GameObject go = Instantiate(HeroButtonPrefab);
-                go.transform.SetParent(heroMenuRect.transform);
-                go.GetComponent<Image>().sprite = GameManager.instance.heroList[i].image;
-                go.transform.GetChild(0).GetComponent<Text>().text = GameManager.instance.heroList[i].name;
-                go.transform.GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[GameManager.instance.heroList[i].HeroGenericType].image;
-                go.transform.GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[GameManager.instance.heroList[i].HeroFightStyleList[0]].image;
-                go.transform.GetChild(3).GetComponent<Text>().text = "%" + GameManager.instance.heroList[i].winRate.ToString();
+                Hero myHero = new Hero();
+                myHero = hero;
+                myHero.gameObject = Instantiate(HeroButtonPrefab);
+                myHero.gameObject.transform.SetParent(heroMenuRect.transform);
+                myHero.gameObject.GetComponent<Image>().sprite = hero.image;
+                myHero.gameObject.transform.GetChild(0).GetComponent<Text>().text = hero.name;
+                myHero.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[hero.HeroGenericType].image;
+                myHero.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[hero.HeroFightStyleList[0]].image;
+                myHero.gameObject.transform.GetChild(3).GetComponent<Text>().text = ""; //"%" + GameManager.instance.heroList[i].winRate.ToString();
 
-                Hero hero = GameManager.instance.heroList[i];
-
-                go.GetComponent<Button>().onClick.RemoveAllListeners();
-                go.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.AddHeroToMyHeroList(hero));
-
+                myHero.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+                myHero.gameObject.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.AddHeroToMyHeroList(myHero));
             }
         }
     }
@@ -313,50 +299,48 @@ public class CanvasManager : MonoBehaviour
         //GameManager.instance.MakeSuggestionforSelectedHero();
     }
 
-    public void SetMyHeroList()
+    public void SetMyHeroList(List<Hero> heroList)
     {
         for (int i = 0; i < myHeroMenuRect.transform.childCount; i++)
         {
             Destroy(myHeroMenuRect.transform.GetChild(i).gameObject);
         }
 
-        for (int i = 0; i < GameManager.instance.myHeroList.Count; i++)
+
+        foreach (Hero hero in GameManager.instance.myHeroList)
         {
-            Debug.Log("MyHeroList Count : " + GameManager.instance.myHeroList.Count);
-            GameObject go = new GameObject();
-            go = Instantiate(HeroCardButtonPrefab);
-            go.transform.SetParent(myHeroMenuRect.transform);
+            hero.gameObject = Instantiate(HeroCardButtonPrefab);
+            hero.gameObject.transform.SetParent(myHeroMenuRect.transform);
 
-            myHeroMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
-            int temp = i;
-            myHeroMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Button>().onClick.AddListener(() => RemoveHeroButtonOnClick(temp));
+            hero.gameObject.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
 
-            myHeroMenuRect.transform.GetChild(i).GetComponent<Image>().sprite = GameManager.instance.myHeroList[i].cardImage;
-            myHeroMenuRect.transform.GetChild(i).GetChild(1).GetChild(0).GetComponent<Text>().text = GameManager.instance.myHeroList[i].name;
+            hero.gameObject.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => RemoveHeroButtonOnClick(hero));
 
-            myHeroMenuRect.transform.GetChild(i).GetChild(2).GetChild(1).GetChild(0).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[GameManager.instance.myHeroList[i].HeroGenericType].image;
-            myHeroMenuRect.transform.GetChild(i).GetChild(2).GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroGenericTypeList[GameManager.instance.myHeroList[i].HeroGenericType].name;
+            hero.gameObject.transform.GetComponent<Image>().sprite = hero.cardImage;
+            hero.gameObject.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = hero.name;
 
-            myHeroMenuRect.transform.GetChild(i).GetChild(2).GetChild(1).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[GameManager.instance.myHeroList[i].HeroFightStyleList[0]].image;
-            myHeroMenuRect.transform.GetChild(i).GetChild(2).GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroFightStyleList[GameManager.instance.myHeroList[i].HeroFightStyleList[0]].name;
+            hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[hero.HeroGenericType].image;
+            hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroGenericTypeList[hero.HeroGenericType].name;
 
-            if (GameManager.instance.myHeroList[i].HeroFightStyleList[1] != 0)
+            hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[hero.HeroFightStyleList[0]].image;
+            hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroFightStyleList[hero.HeroFightStyleList[0]].name;
+
+            if (hero.HeroFightStyleList[1] != 0)
             {
-                myHeroMenuRect.transform.GetChild(i).GetChild(2).GetChild(1).GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[GameManager.instance.myHeroList[i].HeroFightStyleList[1]].image;
-                myHeroMenuRect.transform.GetChild(i).GetChild(2).GetChild(1).GetChild(2).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroFightStyleList[GameManager.instance.myHeroList[i].HeroFightStyleList[1]].name;
-
-                myHeroMenuRect.transform.GetChild(i).GetChild(2).GetChild(1).gameObject.SetActive(true);
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[hero.HeroFightStyleList[1]].image;
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(2).GetChild(0).GetComponent<Text>().text = GameManager.instance.heroFightStyleList[hero.HeroFightStyleList[1]].name;
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(2).gameObject.SetActive(true);
             }
             else
             {
-                myHeroMenuRect.transform.GetChild(i).GetChild(2).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
 
+
+            GameManager.instance.SetHeroItems(hero);
+            #region Current Buff System
+
             GameManager.instance.currentBuffNameList.Clear();
-            for (int t = 0; t < currentTeamBuffRect.transform.childCount; t++)
-            {
-                currentTeamBuffRect.transform.GetChild(t).gameObject.SetActive(false);
-            }
 
             for (int t = 0; t < GameManager.instance.heroGenericTypeList.Count; t++)
             {
@@ -381,6 +365,10 @@ public class CanvasManager : MonoBehaviour
                 }
             }
 
+            for (int i = 0; i < currentTeamBuffRect.transform.childCount; i++)
+            {
+                currentTeamBuffRect.transform.GetChild(i).gameObject.SetActive(false);
+            }
 
             for (int t = 0; t < GameManager.instance.currentBuffNameList.Count; t++)
             {
@@ -396,10 +384,8 @@ public class CanvasManager : MonoBehaviour
                 currentTeamBuffRect.transform.GetChild(t).gameObject.SetActive(true);
             }
 
+            #endregion
 
-
-            GameManager.instance.SetHeroItems(i);
-            myHeroMenuRect.transform.GetChild(i).gameObject.SetActive(true);
         }
 
     }
@@ -451,89 +437,4 @@ public class CanvasManager : MonoBehaviour
 
     #endregion
 
-    //Vector2 origin;
-
-
-    //public float verticalAutosize;
-    //public float horizontalAutosize;
-    //public float topPanelHeight;
-    //public float topPanelWidth;
-    //public float bottomPanelHeight;
-    //public float bottomPanelWidth;
-    //public float rightPanelHeight;
-    //public float rightPanelWidth;
-    //public float leftPanelHeight;
-    //public float leftPanelWidth;
-    //private void Awake()
-    //{
-    //    origin = new Vector2(Screen.width / 2, Screen.height / 2);
-    //}
-
-    //void Start()
-    //{
-    //    //heroMenuRect.GetComponent<RectTransform>().localScale = new Vector2(0.8f, 0.3f);
-    //    //heroMenuRect.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,
-    //    //    Screen.height / 2 - heroMenuRect.GetComponent<RectTransform>().localScale.y / 2 * Screen.height, 0f);
-    //    //PanelSpawner();
-    //}
-
-    ////bir sonraki full değilse düşür
-
-
-    //void PanelSpawner()
-    //{
-    //    for (int i = 0; i < 4; i++)
-    //    {
-    //        if (panelInfoList.Where(x => x.panelPosition.GetHashCode() == i).Count() > 1)
-    //        {
-    //            Debug.Log("Max panel count is 1 for each side. Please make sure is the panel list has 1 panel position for each side!");
-    //            return;
-    //        }
-    //    }
-
-    //    foreach (PanelInfo panel in panelInfoList.OrderBy(x => x.panelPosition.GetHashCode()).ToList())
-    //    {
-    //        GetComponent<RectTransform>().localScale = new Vector2(0.8f, 0.3f);
-
-    //        GameObject go = Instantiate(defaultPanelGO);
-    //        //go.transform.position = new Vector3(Screen.width / 2, Screen.height / 2 +, 0f);
-    //        go.GetComponent<RectTransform>().localScale = new Vector2(1f, panel.sizePersantace / 100f);
-
-
-    //        Debug.Log(panel.panelPosition.GetHashCode());
-    //    }
-    //}
-
-
-
-    //void converter()
-    //{
-
-    //}
-
-
-    //[Serializable]
-    //public class PanelInfo
-    //{
-    //    public bool isActive;
-    //    public float sizePersantace;
-    //    public PanelPosition panelPosition;
-    //    public ScaleType scaleType;
-    //}
-
-    //public enum PanelPosition { Top, Right, Bottom, Left };
-    //public enum ScaleType { FullScale, AutoScale };
-
-    //public void SetMyItemPieceList()
-    //{
-    //    for (int i = 0; i < myHeroMenuRect.transform.childCount; i++)
-    //    {
-    //        myItemPieceMenuRect.transform.GetChild(i).gameObject.SetActive(false);
-    //    }
-
-    //    for (int i = 0; i < GameManager.instance.myItemList.Count; i++)
-    //    {
-    //        myItemPieceMenuRect.transform.GetChild(i).gameObject.SetActive(true);
-    //    }
-    //}
 }
