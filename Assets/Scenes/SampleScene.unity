@@ -248,11 +248,11 @@ MonoBehaviour:
   addItemRect: {fileID: 413244890}
   teamBuffText: {fileID: 1509943660}
   PlayerLevelText: {fileID: 91410707}
-  ItemSuggestionItemPrefab: {fileID: 4606888328621120809, guid: 423f4b78e45d3e14791d8c1f2b623ff5,
+  ItemSuggestionItemPrefab: {fileID: 8697092411488100787, guid: 423f4b78e45d3e14791d8c1f2b623ff5,
     type: 3}
   HeroButtonPrefab: {fileID: 7850522077812342044, guid: 326ca012ae2de7a428f8cea7bb08b947,
     type: 3}
-  HeroCardButtonPrefab: {fileID: 333543839692515323, guid: 6c44f7b6e775ba243886ebf4ffd98828,
+  HeroCardButtonPrefab: {fileID: 4308393382489731400, guid: 6c44f7b6e775ba243886ebf4ffd98828,
     type: 3}
   removeHeroButton: {fileID: 0}
   selectedHeroNameText: {fileID: 0}
@@ -4745,7 +4745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 260.42368, y: 0}
+  m_AnchoredPosition: {x: -0.000022567616, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &457748524
