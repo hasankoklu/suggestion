@@ -8,27 +8,14 @@ using static GameManager;
 
 public class CanvasManager : MonoBehaviour
 {
-
-    public Text teamBuffText;
-    public Text PlayerLevelText;
-
     #region Contents
 
     public Transform heroMenu_Content;
-    public Transform ItemMenu_Content;
     public Transform myHeroMenu_Content;
-    public Transform pieceItemMenu_Content;
-    public Transform complateItemMenu_Content;
     public Transform currentTeamBuff_Content;
     public Transform askWinLose_Content;
-    public Transform addItem_Content;
-    public Transform myHeroItems_Content;
 
     #endregion
-
-    public Button removeHeroButton;
-
-    public Text selectedHeroNameText;
 
     public static CanvasManager instance;
 
@@ -71,16 +58,16 @@ public class CanvasManager : MonoBehaviour
 
     public void PlayerLevelIncreaseButtonClick()
     {
-        GameManager.instance.playerLevel++;
-        PlayerLevelText.text = GameManager.instance.playerLevel.ToString();
+        //GameManager.instance.currentPlayer.PlayerLevel++;
+        //PlayerLevelText.text = GameManager.instance.playerLevel.ToString();
     }
 
     public void PlayerLevelDecreaseButtonClick()
     {
         if (GameManager.instance.playerLevel > 1)
         {
-            GameManager.instance.playerLevel--;
-            PlayerLevelText.text = GameManager.instance.playerLevel.ToString();
+            //GameManager.instance.playerLevel--;
+            //PlayerLevelText.text = GameManager.instance.playerLevel.ToString();
         }
     }
 

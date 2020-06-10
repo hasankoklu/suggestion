@@ -233,24 +233,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1fb90d192ee0f45a73c4f1a1d5a434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamBuffText: {fileID: 0}
   PlayerLevelText: {fileID: 0}
-  heroMenu_Content: {fileID: 0}
-  ItemMenu_Content: {fileID: 0}
-  myHeroMenu_Content: {fileID: 0}
-  pieceItemMenu_Content: {fileID: 0}
-  complateItemMenu_Content: {fileID: 0}
-  selectedInfo_Content: {fileID: 0}
-  suggestion_Content: {fileID: 0}
-  extraItemSuggestion_Content: {fileID: 0}
-  heroTeamSuggestion_Content: {fileID: 0}
-  itemSuggestion_Content: {fileID: 0}
-  currentTeamBuff_Content: {fileID: 0}
+  heroMenu_Content: {fileID: 1402579766}
+  myHeroMenu_Content: {fileID: 457748523}
+  currentTeamBuff_Content: {fileID: 1795087503}
   askWinLose_Content: {fileID: 0}
-  addItem_Content: {fileID: 0}
-  myHeroItems_Content: {fileID: 0}
-  removeHeroButton: {fileID: 0}
-  selectedHeroNameText: {fileID: 0}
 --- !u!1 &77964582
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,7 +968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00018482363, y: 0}
+  m_AnchoredPosition: {x: -0.0000009683279, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &457748524
@@ -2477,96 +2464,112 @@ MonoBehaviour:
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   - heroList: []
     winCount: 0
     loseCount: 0
     buffName: 
     buffCount: 0
+    winRate: 0
     gameObject: {fileID: 0}
   myHeroList: []
   myComplateItemList: []

@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     public List<BestHeroTeam> theBestTeamList;
 
+    public Player currentPlayer;
     public int playerLevel = 1;
 
     public int selectedHeroIndex = -1;
@@ -49,6 +50,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //Player p = new Player();
+        //p.name = "default";
+        //p.PlayerLevel = 1;
+        //currentPlayer = p;
+        //var jsonString = JsonConvert.SerializeObject(currentPlayer, Formatting.Indented, new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore });
+        //System.IO.File.WriteAllText(Application.persistentDataPath + "/CurrentPlayer.txt", jsonString);
+
         myPieceItemList.Add(itemPieceList[0]);
         myPieceItemList.Add(itemPieceList[0]);
         myPieceItemList.Add(itemPieceList[0]);
