@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,7 +214,7 @@ RectTransform:
   m_Children:
   - {fileID: 2065047804}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -233,33 +233,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1fb90d192ee0f45a73c4f1a1d5a434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroMenuRect: {fileID: 1402579765}
-  ItemMenuRect: {fileID: 0}
-  myHeroMenuRect: {fileID: 457748522}
-  pieceItemMenuRect: {fileID: 0}
-  complateItemMenuRect: {fileID: 0}
-  selectedInfoRect: {fileID: 0}
-  suggestionRect: {fileID: 0}
-  extraItemSuggestionRect: {fileID: 0}
-  heroTeamSuggestionRect: {fileID: 0}
-  itemSuggestionRect: {fileID: 0}
-  currentTeamBuffRect: {fileID: 0}
-  askWinLoseRect: {fileID: 0}
-  addItemRect: {fileID: 0}
   teamBuffText: {fileID: 0}
   PlayerLevelText: {fileID: 0}
-  ItemSuggestionItemPrefab: {fileID: 8697092411488100787, guid: 423f4b78e45d3e14791d8c1f2b623ff5,
-    type: 3}
-  HeroButtonPrefab: {fileID: 7850522077812342044, guid: 326ca012ae2de7a428f8cea7bb08b947,
-    type: 3}
-  HeroCardButtonPrefab: {fileID: 4308393382489731400, guid: 6c44f7b6e775ba243886ebf4ffd98828,
-    type: 3}
-  AddIPieceItemButtonPrefab: {fileID: 0}
-  AddComplateItemButtonPrefab: {fileID: 0}
-  currentBuffItemPrefab: {fileID: 0}
+  heroMenu_Content: {fileID: 0}
+  ItemMenu_Content: {fileID: 0}
+  myHeroMenu_Content: {fileID: 0}
+  pieceItemMenu_Content: {fileID: 0}
+  complateItemMenu_Content: {fileID: 0}
+  selectedInfo_Content: {fileID: 0}
+  suggestion_Content: {fileID: 0}
+  extraItemSuggestion_Content: {fileID: 0}
+  heroTeamSuggestion_Content: {fileID: 0}
+  itemSuggestion_Content: {fileID: 0}
+  currentTeamBuff_Content: {fileID: 0}
+  askWinLose_Content: {fileID: 0}
+  addItem_Content: {fileID: 0}
+  myHeroItems_Content: {fileID: 0}
   removeHeroButton: {fileID: 0}
   selectedHeroNameText: {fileID: 0}
-  myHeroItemsRect: {fileID: 0}
 --- !u!1 &77964582
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,98 +505,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88770766}
   m_CullTransparentMesh: 0
---- !u!1 &170076733
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 170076735}
-  - component: {fileID: 170076734}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &170076734
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170076733}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 1
-  m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 1
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &170076735
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &284092934
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +867,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &420650381
 GameObject:
@@ -1082,7 +981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000040915194, y: 0}
+  m_AnchoredPosition: {x: 0.00018482363, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &457748524
@@ -1873,6 +1772,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038853992}
   m_CullTransparentMesh: 0
+--- !u!1 &1049597422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049597424}
+  - component: {fileID: 1049597423}
+  m_Layer: 0
+  m_Name: PrefabManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1049597423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049597422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace1f5e1eb7aad24c8702e0f8f181855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hero_Button: {fileID: 0}
+  CurrentTeamBuff_Image: {fileID: 0}
+  HeroCard_Button: {fileID: 0}
+  ItemPiece_Button: {fileID: 0}
+  ItemSuggestion_Button: {fileID: 0}
+--- !u!4 &1049597424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049597422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1110525870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,2167 +2337,140 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGenericType: 0
   heroList:
-  - name: Ziggs
-    image: {fileID: 21300000, guid: b016e8eb26e561c45bc9d7bda60d0ef3, type: 3}
-    cardImage: {fileID: 21300000, guid: a7409bcf60c018144875ed2bce396739, type: 3}
-    level: 0
-    gameLevel: 0
-    betterItemIdList: 180000001100000012000000
-    betterItemList:
-    - name: 
-      image: {fileID: 0}
-      selectedHero:
-        name: 
-        image: {fileID: 0}
-        cardImage: {fileID: 0}
-        level: 0
-        gameLevel: 0
-        betterItemIdList: 
-        betterItemList: []
-        HeroGenericType: 0
-        HeroFightStyleList: 
-        removeIndex: 0
-        currentItemList: []
-        currentItemPieceList: []
-        currentBuffCount: 0
-        winRate: 0
-        description: 
-        gameObject: {fileID: 0}
-      Type: 0
-      requiredPieceList: 
-      description: 
-      gameObject: {fileID: 0}
-    - name: 
-      image: {fileID: 0}
-      selectedHero:
-        name: 
-        image: {fileID: 0}
-        cardImage: {fileID: 0}
-        level: 0
-        gameLevel: 0
-        betterItemIdList: 
-        betterItemList: []
-        HeroGenericType: 0
-        HeroFightStyleList: 
-        removeIndex: 0
-        currentItemList: []
-        currentItemPieceList: []
-        currentBuffCount: 0
-        winRate: 0
-        description: 
-        gameObject: {fileID: 0}
-      Type: 0
-      requiredPieceList: 
-      description: 
-      gameObject: {fileID: 0}
-    - name: 
-      image: {fileID: 0}
-      selectedHero:
-        name: 
-        image: {fileID: 0}
-        cardImage: {fileID: 0}
-        level: 0
-        gameLevel: 0
-        betterItemIdList: 
-        betterItemList: []
-        HeroGenericType: 0
-        HeroFightStyleList: 
-        removeIndex: 0
-        currentItemList: []
-        currentItemPieceList: []
-        currentBuffCount: 0
-        winRate: 0
-        description: 
-        gameObject: {fileID: 0}
-      Type: 0
-      requiredPieceList: 
-      description: 
-      gameObject: {fileID: 0}
-    HeroGenericType: 0
-    HeroFightStyleList: 0800000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Yasuo
-    image: {fileID: 21300000, guid: 128b9e6b04ed34347b38f7ab98d97e18, type: 3}
-    cardImage: {fileID: 21300000, guid: fc8db0eecaffa6f42b0e2df2942b496d, type: 3}
-    level: 0
-    gameLevel: 0
-    betterItemIdList: 050000000800000004000000
-    betterItemList: []
-    HeroGenericType: 0
-    HeroFightStyleList: 0900000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Mordakaiser
-    image: {fileID: 21300000, guid: b538c8eb72bb02c4c8692574c74ac712, type: 3}
-    cardImage: {fileID: 21300000, guid: 038356c9c4384244f8abd584aabe20a7, type: 3}
-    level: 0
-    gameLevel: 0
-    betterItemIdList: 150000001e00000023000000
-    betterItemList: []
-    HeroGenericType: 6
-    HeroFightStyleList: 0a00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Leona
-    image: {fileID: 21300000, guid: f2cdc42a486286741874058ffafed88c, type: 3}
-    cardImage: {fileID: 21300000, guid: 62db4c13413ecda4dae7a4abc5cba5ae, type: 3}
-    level: 0
-    gameLevel: 0
-    betterItemIdList: 240000001e00000023000000
-    betterItemList: []
-    HeroGenericType: 2
-    HeroFightStyleList: 0a00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Darius
-    image: {fileID: 21300000, guid: da2b9cb628bcc214abab44c36f3f79fa, type: 3}
-    cardImage: {fileID: 21300000, guid: 8bba3c7cca0e01f4ebd8171a1314f7fa, type: 3}
-    level: 0
-    gameLevel: 0
-    betterItemIdList: 110000001400000004000000
-    betterItemList: []
-    HeroGenericType: 8
-    HeroFightStyleList: 0600000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Xin Zhao
-    image: {fileID: 21300000, guid: 2c6366d675d919441a8cdc36caa18ea4, type: 3}
-    cardImage: {fileID: 21300000, guid: 236f7fb463f606540b86cc74c73bb2d6, type: 3}
-    level: 1
-    gameLevel: 0
-    betterItemIdList: 0c0000001e00000023000000
-    betterItemList: []
-    HeroGenericType: 3
-    HeroFightStyleList: 0c00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Sona
-    image: {fileID: 21300000, guid: d4157b024be84c34b9a8d5c87ed07af0, type: 3}
-    cardImage: {fileID: 21300000, guid: 8ec5ae5236772dd4c8ae7bab5ee0698c, type: 3}
-    level: 1
-    gameLevel: 0
-    betterItemIdList: 1a0000001800000003000000
-    betterItemList: []
-    HeroGenericType: 0
-    HeroFightStyleList: 0300000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Poppy
-    image: {fileID: 21300000, guid: 866739327c70d484b97f3d16ec78a7e7, type: 3}
-    cardImage: {fileID: 21300000, guid: 90df5d16161df22489c975a3273426b8, type: 3}
-    level: 1
-    gameLevel: 0
-    betterItemIdList: 1e0000002300000011000000
-    betterItemList: []
-    HeroGenericType: 9
-    HeroFightStyleList: 0a00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Neeko
-    image: {fileID: 21300000, guid: c2e3693a9329400489842ba159ca120a, type: 3}
-    cardImage: {fileID: 21300000, guid: 395dc0ecb4a019f4eab1bde138fa4270, type: 3}
-    level: 1
-    gameLevel: 0
-    betterItemIdList: 040000001500000014000000
-    betterItemList: []
-    HeroGenericType: 9
-    HeroFightStyleList: 0c00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Master Yi
-    image: {fileID: 21300000, guid: d2bdf84851fbeef4a96470d37218dadc, type: 3}
-    cardImage: {fileID: 21300000, guid: d87a3a30ed521d54c866684650341f42, type: 3}
-    level: 1
-    gameLevel: 0
-    betterItemIdList: 0a000000260000001e000000
-    betterItemList: []
-    HeroGenericType: 0
-    HeroFightStyleList: 0900000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Lucian
-    image: {fileID: 21300000, guid: a2d7183a143b75445a391aaee6c01122, type: 3}
-    cardImage: {fileID: 21300000, guid: 459d25f805f33fe4aa922a4c290c184a, type: 3}
-    level: 1
-    gameLevel: 0
-    betterItemIdList: 200000000100000010000000
-    betterItemList: []
-    HeroGenericType: 2
-    HeroFightStyleList: 0500000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Karma
-    image: {fileID: 21300000, guid: 959c40986399e0245aa7204e1186dc42, type: 3}
-    cardImage: {fileID: 21300000, guid: e6cc1409016568847871452db9ba182f, type: 3}
-    level: 1
-    gameLevel: 0
-    betterItemIdList: 060000001800000011000000
-    betterItemList: []
-    HeroGenericType: 6
-    HeroFightStyleList: 0300000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Jayce
-    image: {fileID: 21300000, guid: 9456acb1b39743749a826321445e18ec, type: 3}
-    cardImage: {fileID: 21300000, guid: 5a88229cdf2fc1d468339a71b8df3a80, type: 3}
-    level: 1
-    gameLevel: 0
-    betterItemIdList: 140000000400000023000000
-    betterItemList: []
-    HeroGenericType: 8
-    HeroFightStyleList: 0a00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Graves
-    image: {fileID: 21300000, guid: 68059066651a6484fa490fcf33654dcc, type: 3}
-    cardImage: {fileID: 21300000, guid: a39c28477e4574149a0c0badba5a6913, type: 3}
-    level: 1
-    gameLevel: 0
-    betterItemIdList: 20000000240000001b000000
-    betterItemList: []
-    HeroGenericType: 8
-    HeroFightStyleList: 0500000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Zoe
-    image: {fileID: 21300000, guid: fff44b439c6e01645b208946941dce33, type: 3}
-    cardImage: {fileID: 21300000, guid: 17ab906bfa473bc459584e0cceb0364c, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 1a0000002400000003000000
-    betterItemList: []
-    HeroGenericType: 9
-    HeroFightStyleList: 0700000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Xayah
-    image: {fileID: 21300000, guid: 61675d6d177e9e64eb12fd75f68b5dbc, type: 3}
-    cardImage: {fileID: 21300000, guid: 61780b92c848e074d88b4d5aacb95120, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 100000000800000026000000
-    betterItemList: []
-    HeroGenericType: 3
-    HeroFightStyleList: 0900000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Twisted Fate
-    image: {fileID: 21300000, guid: 2427d2dbbc9e25f44a8ce35fb06847c0, type: 3}
-    cardImage: {fileID: 21300000, guid: 1f24cdcab0b4fe9439314bb5cf087af1, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 030000001500000017000000
-    betterItemList: []
-    HeroGenericType: 5
-    HeroFightStyleList: 0700000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Syndra
-    image: {fileID: 21300000, guid: 96749fcba2e18b841b22275c2d1b7230, type: 3}
-    cardImage: {fileID: 21300000, guid: 42737c4c4fbe9a24d881a3bc26168b7d, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 180000001a00000017000000
-    betterItemList: []
-    HeroGenericType: 9
-    HeroFightStyleList: 0700000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Shen
-    image: {fileID: 21300000, guid: 6f11d2f0470b6cd45926b122509fab2a, type: 3}
-    cardImage: {fileID: 21300000, guid: 2e43b53ee3374bc47976eb99de7bb934, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 1e0000001900000023000000
-    betterItemList: []
-    HeroGenericType: 5
-    HeroFightStyleList: 0900000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Shaco
-    image: {fileID: 21300000, guid: c8222af423eb0f442a7ecabcb7947aa3, type: 3}
-    cardImage: {fileID: 21300000, guid: b669091f6e11b3b48a7588e9df4b8794, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 080000000500000004000000
-    betterItemList: []
-    HeroGenericType: 6
-    HeroFightStyleList: 0200000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Rumble
-    image: {fileID: 21300000, guid: 5facecfd5bffd0e4a836f74bd746d896, type: 3}
-    cardImage: {fileID: 21300000, guid: 3b7c0601df1a7a442a996e1457feb647, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 260000001e0000000c000000
-    betterItemList: []
-    HeroGenericType: 7
-    HeroFightStyleList: 0800000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Malphite
-    image: {fileID: 21300000, guid: be18279818519bd44998f7ec4f2f8c0e, type: 3}
-    cardImage: {fileID: 21300000, guid: d01a92f9fd238ff409f4862cf3137652, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 1e000000270000000e000000
-    betterItemList: []
-    HeroGenericType: 0
-    HeroFightStyleList: 0100000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Kha'Zix
-    image: {fileID: 21300000, guid: a5c164ce2acde4846a24ee152025908a, type: 3}
-    cardImage: {fileID: 21300000, guid: d8c75f229224a7544af1898be5d7d906, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 090000000800000004000000
-    betterItemList: []
-    HeroGenericType: 1
-    HeroFightStyleList: 0200000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Kai'Sa
-    image: {fileID: 21300000, guid: c59fe2899810b4842b4f097d22a7637c, type: 3}
-    cardImage: {fileID: 21300000, guid: dabe16362059c1849b2fbd70905676f2, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 150000001800000016000000
-    betterItemList: []
-    HeroGenericType: 4
-    HeroFightStyleList: 0200000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Jarvan IV
-    image: {fileID: 21300000, guid: fd7d494d700631c459af3393f5b9f134, type: 3}
-    cardImage: {fileID: 21300000, guid: 5972652a67a8aa6448230ed5f0825c2a, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 0e0000001300000019000000
-    betterItemList: []
-    HeroGenericType: 6
-    HeroFightStyleList: 0c00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Fiora
-    image: {fileID: 21300000, guid: f59f1d73a159fb546baf25134bf7bd97, type: 3}
-    cardImage: {fileID: 21300000, guid: ed63fe28ca7004140ba844c21b7ff9b2, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 240000001b0000000e000000
-    betterItemList: []
-    HeroGenericType: 2
-    HeroFightStyleList: 0900000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Ezreal
-    image: {fileID: 21300000, guid: ca9cc8bd8809b3f429ff9ce82377e43d, type: 3}
-    cardImage: {fileID: 21300000, guid: 6447a5cd133d988468f616e23f207cd9, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 200000001f00000003000000
-    betterItemList: []
-    HeroGenericType: 5
-    HeroFightStyleList: 0500000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Caitlyn
-    image: {fileID: 21300000, guid: bddab3805524bc5448b5ec2c856a6e98, type: 3}
-    cardImage: {fileID: 21300000, guid: 3037aeb9d8a917949a4fb2112625e3e5, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 0a000000080000000d000000
-    betterItemList: []
-    HeroGenericType: 5
-    HeroFightStyleList: 0b00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Blitzcrank
-    image: {fileID: 21300000, guid: ae73142e82b6a794892a0506ce0d9f5e, type: 3}
-    cardImage: {fileID: 21300000, guid: d01650077d19c8f42bb8e4265ae64de2, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 240000002a00000021000000
-    betterItemList: []
-    HeroGenericType: 5
-    HeroFightStyleList: 0100000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Annie
-    image: {fileID: 21300000, guid: f992275bc4880d44093bc76fb2a0139d, type: 3}
-    cardImage: {fileID: 21300000, guid: 9d53631cdabcbc94386782a511f92dab, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 1e000000260000000c000000
-    betterItemList: []
-    HeroGenericType: 7
-    HeroFightStyleList: 0700000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Ahri
-    image: {fileID: 21300000, guid: 5ca80e7a163a5e54297120ce98196744, type: 3}
-    cardImage: {fileID: 21300000, guid: 2daf04a2f404b55449eddf8eef90eaa5, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 150000001a00000017000000
-    betterItemList: []
-    HeroGenericType: 9
-    HeroFightStyleList: 0700000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Wukong
-    image: {fileID: 21300000, guid: e0d92a54d1b0cc54fa019e6f3aba6e7d, type: 3}
-    cardImage: {fileID: 21300000, guid: 7344936844b71bb48b54ae0bf2c74a0e, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 190000001400000015000000
-    betterItemList: []
-    HeroGenericType: 5
-    HeroFightStyleList: 0a00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Vi
-    image: {fileID: 21300000, guid: 4edb2d6450b15f540be94eb33cccf078, type: 3}
-    cardImage: {fileID: 21300000, guid: d9849c260caa2884d94685b91bc627cf, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 140000001900000024000000
-    betterItemList: []
-    HeroGenericType: 2
-    HeroFightStyleList: 0100000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Soraka
-    image: {fileID: 21300000, guid: 4fc0c6e765a132343b25d6ca103879ad, type: 3}
-    cardImage: {fileID: 21300000, guid: 5ab42d42d78b37649b002b24b148307b, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 030000001a00000018000000
-    betterItemList: []
-    HeroGenericType: 9
-    HeroFightStyleList: 0300000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Lux
-    image: {fileID: 21300000, guid: 0f17ff9c3cd97154da0a993487ecd97c, type: 3}
-    cardImage: {fileID: 21300000, guid: 4b2fc298f6af82445b210dc847689b01, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 150000001200000024000000
-    betterItemList: []
-    HeroGenericType: 6
-    HeroFightStyleList: 0700000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Kassadin
-    image: {fileID: 21300000, guid: 6ce21a92800aa3d459c4af63aa0ab1bd, type: 3}
-    cardImage: {fileID: 21300000, guid: c79b2b7f412d24d488a3c82bdc5d30ec, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 150000001b00000018000000
-    betterItemList: []
-    HeroGenericType: 3
-    HeroFightStyleList: 0600000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Jinx
-    image: {fileID: 21300000, guid: 51d298fcdaea3f7459233c1449b8f29c, type: 3}
-    cardImage: {fileID: 21300000, guid: da657a9390ace5443a069e32e0405ee1, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 010000002000000010000000
-    betterItemList: []
-    HeroGenericType: 0
-    HeroFightStyleList: 0500000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Jhin
-    image: {fileID: 21300000, guid: ebed6fc4a140d924990f9f927ac2f528, type: 3}
-    cardImage: {fileID: 21300000, guid: 4e737dd9e3994c64a890aad815e81fb8, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 080000001000000004000000
-    betterItemList: []
-    HeroGenericType: 6
-    HeroFightStyleList: 0b00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Irelia
-    image: {fileID: 21300000, guid: 83d09a9ae65bd2444b979c8b02d9ae94, type: 3}
-    cardImage: {fileID: 21300000, guid: 6ab06c022e43f3d418ca727383f86658, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 080000000400000010000000
-    betterItemList: []
-    HeroGenericType: 2
-    HeroFightStyleList: 0600000009000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Gangplank
-    image: {fileID: 21300000, guid: b9a50ecf28a049d4a90543833023808d, type: 3}
-    cardImage: {fileID: 21300000, guid: 831ed5647ba720747bb417ad1d168aac, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 040000001500000011000000
-    betterItemList: []
-    HeroGenericType: 8
-    HeroFightStyleList: 0400000008000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Ashe
-    image: {fileID: 21300000, guid: c6691bd055a92ed4eb619d8c43c08611, type: 3}
-    cardImage: {fileID: 21300000, guid: b7ee897c48b69874dbd844480cff3821, type: 3}
-    level: 3
-    gameLevel: 0
-    betterItemIdList: 030000000a0000000d000000
-    betterItemList: []
-    HeroGenericType: 3
-    HeroFightStyleList: 0b00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Xerath
-    image: {fileID: 21300000, guid: 8c789726dd8ebe04bbe83d58ffa7b98a, type: 3}
-    cardImage: {fileID: 21300000, guid: 8b8c558f9bbc1f44fb3d6594bdec9c8d, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 0a0000002600000011000000
-    betterItemList: []
-    HeroGenericType: 6
-    HeroFightStyleList: 0700000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Vel'Koz
-    image: {fileID: 21300000, guid: 305af644d587e874d81c1dc45c050c47, type: 3}
-    cardImage: {fileID: 21300000, guid: 2c228c56378a6b5408acf4cdc092050a, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 150000001800000026000000
-    betterItemList: []
-    HeroGenericType: 1
-    HeroFightStyleList: 0700000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Thresh
-    image: {fileID: 21300000, guid: b501db7d9f0b9cf4e9e8cfb314e568e4, type: 3}
-    cardImage: {fileID: 21300000, guid: 5d806e9c27622574b95ccc1ac75f2f16, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 030000002400000018000000
-    betterItemList: []
-    HeroGenericType: 5
-    HeroFightStyleList: 0600000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Miss Fortune
-    image: {fileID: 21300000, guid: 4f9ad11de8a74a44fa16d23576d0d78c, type: 3}
-    cardImage: {fileID: 21300000, guid: 128fbac9777eee14195f741f3d97e050, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 180000002600000015000000
-    betterItemList: []
-    HeroGenericType: 4
-    HeroFightStyleList: 0400000005000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Lulu
-    image: {fileID: 21300000, guid: 2075bab056c21d24f92dd169d7e69901, type: 3}
-    cardImage: {fileID: 21300000, guid: c9b46a88db35e7d428c65328aedba9f1, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 030000001800000024000000
-    betterItemList: []
-    HeroGenericType: 3
-    HeroFightStyleList: 0300000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Kayle
-    image: {fileID: 21300000, guid: 2d925a619b4242446bedc1ce59fab2c1, type: 3}
-    cardImage: {fileID: 21300000, guid: 47ec783eaac577f439802f95d1c94112, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 0a0000000900000004000000
-    betterItemList: []
-    HeroGenericType: 4
-    HeroFightStyleList: 0900000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Fizz
-    image: {fileID: 21300000, guid: 87edcf74f118d174587cdcbbd0c6cb38, type: 3}
-    cardImage: {fileID: 21300000, guid: 342d09cf4605903489c628d115064545, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 26000000040000000c000000
-    betterItemList: []
-    HeroGenericType: 7
-    HeroFightStyleList: 0200000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Ekko
-    image: {fileID: 21300000, guid: 1fc07dd71a737bd47aa79b04a2dc1ed9, type: 3}
-    cardImage: {fileID: 21300000, guid: ea13b9a5194238346a4dcf7c40c6332f, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 150000001100000014000000
-    betterItemList: []
-    HeroGenericType: 2
-    HeroFightStyleList: 0200000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Cho'Gath
-    image: {fileID: 21300000, guid: a138b72b04f885647a52b2ff561b4590, type: 3}
-    cardImage: {fileID: 21300000, guid: eba738e7ec8b89242b2c6008dcaf649c, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 140000001500000023000000
-    betterItemList: []
-    HeroGenericType: 1
-    HeroFightStyleList: 0100000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Aurelion Sol
-    image: {fileID: 21300000, guid: 04ea43e35e44b0f40808556491f66d58, type: 3}
-    cardImage: {fileID: 21300000, guid: 42d8489f51cccb64a8d84ad668f97876, type: 3}
-    level: 4
-    gameLevel: 0
-    betterItemIdList: 150000001600000018000000
-    betterItemList: []
-    HeroGenericType: 0
-    HeroFightStyleList: 0d00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
-  - name: Rakan
-    image: {fileID: 21300000, guid: 2f999c05a8eccd645b6025d592545a77, type: 3}
-    cardImage: {fileID: 21300000, guid: 8e67ac47a1951b04d8a83f62bee85d18, type: 3}
-    level: 2
-    gameLevel: 0
-    betterItemIdList: 150000000300000019000000
-    betterItemList: []
-    HeroGenericType: 3
-    HeroFightStyleList: 0c00000000000000
-    removeIndex: 0
-    currentItemList: []
-    currentItemPieceList: []
-    currentBuffCount: 0
-    winRate: 0
-    description: 
-    gameObject: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   itemList:
-  - name: "\xD6l\xFCm K\u0131l\u0131c\u0131"
-    image: {fileID: 21300000, guid: 9ca5e49a91ed3d744b80e0c948df951c, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0000000000000000
-    description: "Her asist +30 sald\u0131r\u0131 kazand\u0131r\u0131r."
-    gameObject: {fileID: 0}
-  - name: Dev Katili
-    image: {fileID: 21300000, guid: 6be2a8b945e9a7743a3f50faeda4a8e6, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0000000001000000
-    description: "Normal vuru\u015Flar rakibin can\u0131n\u0131n %13'\xFC ek hasar
-      verir."
-    gameObject: {fileID: 0}
-  - name: "Hextech Silahk\u0131l\u0131\xE7"
-    image: {fileID: 21300000, guid: f4cfd626e42116941b4937ea371fc278, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0000000002000000
-    description: "T\xFCm sald\u0131r\u0131lardan %25 can yenileme"
-    gameObject: {fileID: 0}
-  - name: "Shoji'nin m\u0131zra\u011Fa"
-    image: {fileID: 21300000, guid: 04eff6cbf0f13894f9e224992d4ce2ea, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0000000003000000
-    description: "Yetenek kulland\u0131ktan sonra normal sald\u0131r\u0131 %18 mana
-      verir"
-    gameObject: {fileID: 0}
-  - name: Koruyucu Melek
-    image: {fileID: 21300000, guid: 0bce32874dff73247a6f1bd1f4118f82, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0000000004000000
-    description: "\xD6len  karakter 2 sn sonra 400 canla yeniden do\u011Far"
-    gameObject: {fileID: 0}
-  - name: "Kanasusam\u0131\u015F"
-    image: {fileID: 21300000, guid: 237d61e1f4a194446b5248f3332cf2e4, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0000000005000000
-    description: "Normal sald\u0131r\u0131lardan %35 can yenileme"
-    gameObject: {fileID: 0}
-  - name: "Zeke nin Sanca\u011F\u0131"
-    image: {fileID: 21300000, guid: 08a41e8bc9a9f784e8e8c1dc4b46750b, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0000000006000000
-    description: "Kendisi, sa\u011F\u0131ndaki ve solundaki karakterlere tur ba\u015F\u0131nda
-      %30 sald\u0131r\u0131 h\u0131z\u0131 verir"
-    gameObject: {fileID: 0}
-  - name: "Mahfolmu\u015F Kral\u0131n K\u0131l\u0131c\u0131"
-    image: {fileID: 21300000, guid: 37935511f8837aa41a53c744aeb193a9, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0000000007000000
-    description: "Kendisii, sa\u011F\u0131nda ki ve solundaki karakterlere tur ba\u015F\u0131nda
-      +%30 sald\u0131r\u0131 h\u0131z\u0131 verir"
-    gameObject: {fileID: 0}
-  - name: "Ebedi K\u0131l\u0131\xE7"
-    image: {fileID: 21300000, guid: 9857cff054e7d664a86b5db5e655a4bc, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0000000008000000
-    description: "+%100 krritik vuru\u015F verir"
-    gameObject: {fileID: 0}
-  - name: "Bombard\u0131man Topu"
-    image: {fileID: 21300000, guid: 0bba1c69931e7ae4d83f146191a138ed, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0100000001000000
-    description: "+%200 sald\u0131r\u0131 menzili verir"
-    gameObject: {fileID: 0}
-  - name: Guinsoo'nun Hiddeti
-    image: {fileID: 21300000, guid: 18c87b35d2aa0b542b30de53dbbdcd47, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0100000002000000
-    description: "Her normal sald\u0131r\u0131 %5 h\u0131z kazand\u0131r\u0131r."
-    gameObject: {fileID: 0}
-  - name: "Statik Han\xE7er"
-    image: {fileID: 21300000, guid: 6f1a1749d4a9c604bb91e1df597e505e, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0100000003000000
-    description: "Her 3. normal vuru\u015F b\xFCy\xFC hasar\u0131 verir"
-    gameObject: {fileID: 0}
-  - name: "Titan\u0131n Azmi "
-    image: {fileID: 21300000, guid: 92e876318b54b994ba52ffe9b9141893, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0100000004000000
-    description: "25 defans al\u0131r ve  ve her kritik vuru\u015F ya da al\u0131nan
-      hasar %2 atak artt\u0131r\u0131r. Max 50 defa"
-    gameObject: {fileID: 0}
-  - name: "Runaan'\u0131n Kas\u0131rgas\u0131"
-    image: {fileID: 21300000, guid: 6b62869845515ec41a1853da1c968601, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0100000005000000
-    description: "%70 g\xFC\xE7le yak\u0131ndaki birime de sald\u0131r\u0131r"
-    gameObject: {fileID: 0}
-  - name: "Zz'rot Kap\u0131s\u0131"
-    image: {fileID: 21300000, guid: 62d634fbe1a15744f80ec011b45deb2f, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0100000006000000
-    description: "\xD6ld\xFC\u011F\xFCnde yarat\u0131k \xE7\u0131kar ve sava\u015Fmaya
-      devam eder"
-    gameObject: {fileID: 0}
-  - name: "Casus Pen\xE7esi "
-    image: {fileID: 21300000, guid: 646e0829fcd55d6499b3a49986d7148c, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0100000007000000
-    description: Casus yapar
-    gameObject: {fileID: 0}
-  - name: "Son F\u0131s\u0131lt\u0131 "
-    image: {fileID: 21300000, guid: def090968c6c36248bb9d990397fca7b, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0100000008000000
-    description: "Krit curdu\u011Funda 3 sn %90 z\u0131rh k\u0131rar"
-    gameObject: {fileID: 0}
-  - name: "Rabadon'un \u015Eapkas\u0131"
-    image: {fileID: 21300000, guid: 32d89d18d5eae2948bc65905498622b0, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0200000002000000
-    description: "+%50 yetenek g\xFCc\xFC ve t\xFCm kaynaklar %50 etkili"
-    gameObject: {fileID: 0}
-  - name: "Luden'in Feryad\u0131 "
-    image: {fileID: 21300000, guid: 0686913a38f852f4fb8ca04e3e6e178d, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0200000003000000
-    description: "Yetenek vurmak \xE7evredekilere de vuru\u015F yapar"
-    gameObject: {fileID: 0}
-  - name: "Demir Solari'nin Bro\u015Fu"
-    image: {fileID: 21300000, guid: 5a9a90c4032f43f489174f8f739091c1, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0200000004000000
-    description: "\xC7at\u0131\u015Fman\u0131n ba\u015F\u0131nda kullan\u0131c\u0131
-      ve ayn\u0131 yatay \xE7izgi \xFCst\xFCndeki 2 h\xFCcrlerik bir alan i\xE7inde
-      bulunan tak\u0131m arkada\u015Flar\u0131 8 saniyeli\u011Fine hasar engelleyen
-      bir kalkan kazan\u0131r"
-    gameObject: {fileID: 0}
-  - name: "\u0130yon K\u0131v\u0131lc\u0131m\u0131"
-    image: {fileID: 21300000, guid: 4c0fda62e9c78df499c4dcc404ac55a3, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0200000005000000
-    description: "2 h\xFCcrelik bir alanda i\xE7indeki takilerin b\xFCy\xFC direnci
-      %50 azal\u0131r (bu etki birikmez). Yetenek kullanan rakiplere elektrik verilir
-      . Rakipler azami manalar\u0131n\u0131n %225 kaadar\u0131na e\u015Fde\u011Fer
-      b\xFCy\xFC hasar\u0131 al\u0131r"
-    gameObject: {fileID: 0}
-  - name: Morellonomikon
-    image: {fileID: 21300000, guid: 275eb6e155db1c74c96806601ec31eb2, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0200000006000000
-    description: "Kullan\u0131c\u0131 yetene\u011Fiyle hasar verdi\u011Finde hedefini
-      yakarak ona 10 saniye boyunca azami can\u0131nn %25 kadar\u0131na e\u015F de\u011Fer
-      miktarda ger\xE7ek hasar verir ve yanma s\xFCresince t\xFCm iyile\u015Ftirme
-      etkilerini %50 azalt\u0131r"
-    gameObject: {fileID: 0}
-  - name: "Patlay\u0131c\u0131 Uzman\u0131 Bombas\u0131 "
-    image: {fileID: 21300000, guid: e7bf9f7e9a1e83c48a3a234213a5b1b5, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0200000007000000
-    description: "Kullan\u0131c\u0131 Patlay\u0131c\u0131 Uzman\u0131 \xF6zelli\u011Fi
-      kazan\u0131r."
-    gameObject: {fileID: 0}
-  - name: "M\xFCcevherli Eldiven "
-    image: {fileID: 21300000, guid: 34562f6182cb295418926aadc841f84f, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0200000008000000
-    description: "Kullan\u0131c\u0131n\u0131n yetenekleri kritik vuru\u015F yapabilir"
-    gameObject: {fileID: 0}
-  - name: "Seraph'\u0131n \u015Eefkati "
-    image: {fileID: 21300000, guid: e9f3774822f8c814da71460acf736902, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0300000003000000
-    description: "kullan\u0131c\u0131 yetene\u011Fi kulland\u0131ktan sonra 20 Mana
-      kazan\u0131r."
-    gameObject: {fileID: 0}
-  - name: "Donmu\u015F Y\xFCrek "
-    image: {fileID: 21300000, guid: 627ed902310bbbe4db0a7ac49ac64036, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0300000004000000
-    description: "Yak\u0131ndaki rakiplerin sald\u0131r\u0131 h\u0131z\u0131n\u0131
-      %50 azalt\u0131r ilkinden sonra \u015Fam\u011Fiyona verilen her Donmu\u015F
-      Y\xFCrek bu etkinin yar\u0131\xE7ap\u0131n\u0131 geni\u015Fletir"
-    gameObject: {fileID: 0}
-  - name: "L\xFCtuf Kadehi "
-    image: {fileID: 21300000, guid: 95eba363fd703e345aaa71096e098015, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0300000005000000
-    description: "Kullan\u0131c\u0131 bir yetenek kulland\u0131\u011F\u0131nda 2
-      h\xFCcrelik bir alan i\xE7indeki tak\u0131m arkada\u015Flar\u0131na 8 mana
-      verir (kendiside dahil)"
-    gameObject: {fileID: 0}
-  - name: Kefaret
-    image: {fileID: 21300000, guid: aa6b766c023091240b6a54a7ef91615e, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0300000006000000
-    description: "Kullan\u0131c\u0131 katledildi\u011Finde tak\u0131m arkada\u015Flar\u0131
-      800 can iyle\u015Ftirir."
-    gameObject: {fileID: 0}
-  - name: "Y\u0131ld\u0131zlar Muhaf\u0131z\u0131 T\u0131ls\u0131m\u0131 "
-    image: {fileID: 21300000, guid: 52a1f55072ba00244ad30e4e9eaa59c4, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0300000007000000
-    description: "Kullan\u0131c\u0131 y\u0131ld\u0131z muhaf\u0131z\u0131 \xF6zelli\u011Fi
-      kazan\u0131r."
-    gameObject: {fileID: 0}
-  - name: 'Adaletin Eli '
-    image: {fileID: 21300000, guid: 1fa17b2f0bc56cb4c80f944f72246fc8, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0300000008000000
-    description: "Her planlama evresinin ba\u015F\u0131nda bunlardan birini kazan\u0131r.Normal
-      sald\u0131r\u0131lar ve yetenekler %50 hasar verir. Normal sald\u0131r\u0131lar
-      isabethalinde 50 can iyle\u015Ftirir"
-    gameObject: {fileID: 0}
-  - name: 'Dikenli Yelek '
-    image: {fileID: 21300000, guid: aa1fc1f23c59af346af6f77ce2e8f9f7, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0400000004000000
-    description: "Kritik vuru\u015Flardan al\u0131nan ilave hasar\u0131 yoksayar.
-      Bir normal sald\u0131r\u0131dan isabet al\u0131nd\u0131\u011F\u0131nda yak\u0131ndaki
-      t\xFCm rakiplere her 2.5 saniyede bir b\xFCy\xFC hasar\u0131 verir"
-    gameObject: {fileID: 0}
-  - name: "K\u0131l\u0131\xE7 K\u0131ran "
-    image: {fileID: 21300000, guid: d6ad84732e18af149b01d9feea07664c, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0400000005000000
-    description: "Kullan\u0131c\u0131n\u0131n normal sald\u0131r\u0131lar\u0131 %25
-      ihtimalle ve 3 saniyeli\u011Fine rakibini silahs\u0131z b\u0131rakarak bu hedefin
-      normal sald\u0131r\u0131 yapmas\u0131n\u0131 engeller"
-    gameObject: {fileID: 0}
-  - name: "K\u0131rm\u0131z\u0131 G\xFC\xE7lendirme "
-    image: {fileID: 21300000, guid: 812f7089a8424a544a4c4e0962ba6927, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0400000006000000
-    description: "Kullan\u0131c\u0131n\u0131n normal sald\u0131r\u0131lar\u0131 isabet
-      halinde hedefi yakarak ona 10 saniye boyunca can\u0131n\u0131n %25 kadar\u0131na
-      e\u015F de\u011Fier miktarda ger\xE7ek hasar verir  ve yanma s\xFCresince iyile\u015Ftirme
-      etkilerini %50 azalt\u0131r."
-    gameObject: {fileID: 0}
-  - name: 'Asi Madalyonu '
-    image: {fileID: 21300000, guid: 93c3f58174f6da54fa83dcbce27c011f, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0400000007000000
-    description: "Kullan\u0131c\u0131 asi \xF6zelli\u011Fi ta\u015F\u0131r."
-    gameObject: {fileID: 0}
-  - name: "Suk\xFCnet \xD6rt\xFCs\xFC "
-    image: {fileID: 21300000, guid: 1569376e2899dab488292d4e86417877, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0400000008000000
-    description: "D\xFCz ilerleyen bir \u0131\u015F\u0131n atarak etkilenen rakiplerin
-      ilk yetenek kullan\u0131m\u0131n\u0131 geciktiri ve onlar yeniden yetenek kullanana
-      kadar %40 mana art\u0131r\u0131r"
-    gameObject: {fileID: 0}
-  - name: "Ejder Pen\xE7esi "
-    image: {fileID: 21300000, guid: ca6ffeec263095c4a85f9b1efe39633f, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0500000005000000
-    description: "Al\u0131nan b\xFCy\xFC hasar\u0131n\u0131 &50 azalt\u0131r"
-    gameObject: {fileID: 0}
-  - name: Karayel
-    image: {fileID: 21300000, guid: 4d3637b9730c7d94c9561c8d67e24448, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0500000006000000
-    description: "Arenan\u0131n kar\u015F\u0131 taraf\u0131ndan bir hortum olu\u015Fturarak
-      en yak\u0131n rakibi 5 saniyeli\u011Fine \xE7at\u0131\u015Fma d\u0131\u015F\u0131
-      b\u0131rak\u0131r"
-    gameObject: {fileID: 0}
-  - name: "Semavi K\xFCre "
-    image: {fileID: 21300000, guid: 30c77d3c5f032f24fbc80f0dc19ee729, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0500000007000000
-    description: "Ayr\u0131ca semavi \xF6zelli\u011Fi kazan\u0131r"
-    gameObject: {fileID: 0}
-  - name: "C\u0131va "
-    image: {fileID: 21300000, guid: 3f68a9211c2944d488d65668ac27e505, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0500000008000000
-    description: "\u0130lk 10 sn kitle kontrole kar\u015F\u0131 koyar"
-    gameObject: {fileID: 0}
-  - name: "Warmog'un Z\u0131rh\u0131 "
-    image: {fileID: 21300000, guid: 36c3b3fe3bb7bcc4eb81175b8414f3a7, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0600000006000000
-    description: "Her asist +30 sald\u0131r\u0131 kazand\u0131r\u0131r."
-    gameObject: {fileID: 0}
-  - name: "Koruyucu Z\u0131rh\u0131 "
-    image: {fileID: 21300000, guid: fc8f716a699ed6345aad8843606911f8, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0600000007000000
-    description: "Her saniye can\u0131n %5 kadar\u0131n\u0131 yeniler max 150 can
-      yenileme"
-    gameObject: {fileID: 0}
-  - name: "Kapan Pen\xE7e "
-    image: {fileID: 21300000, guid: 18598155bd30f3a4dac66a2d6bfbd917, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0600000008000000
-    description: Kendine vurup yetenek kullanan hero 4 sn sersemler
-    gameObject: {fileID: 0}
-  - name: "Do\u011Fan\u0131n Kudreti "
-    image: {fileID: 21300000, guid: 041b96e70edbf214898e960448cee956, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0700000007000000
-    description: "+1 Karakter s\u0131n\u0131r\u0131 ekler"
-    gameObject: {fileID: 0}
-  - name: "Sonsuz Karanl\u0131k' \u0131n Y\xFCre\u011Fi"
-    image: {fileID: 21300000, guid: 9fcf1c0c58ffbdb469950f9b9d758722, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0700000008000000
-    description: "Sonsuz Karanl\u0131k \xF6zelli\u011Fi ekler."
-    gameObject: {fileID: 0}
-  - name: "H\u0131rs\u0131z Eldiveni "
-    image: {fileID: 21300000, guid: 4eddb0d181340e84cbeb0ce9775571c4, type: 3}
-    selectedHero:
-      name: 
-      image: {fileID: 0}
-      cardImage: {fileID: 0}
-      level: 0
-      gameLevel: 0
-      betterItemIdList: 
-      betterItemList: []
-      HeroGenericType: 0
-      HeroFightStyleList: 
-      removeIndex: 0
-      currentItemList: []
-      currentItemPieceList: []
-      currentBuffCount: 0
-      winRate: 0
-      description: 
-      gameObject: {fileID: 0}
-    Type: 0
-    requiredPieceList: 0800000008000000
-    description: "Kullan\u0131c\u0131 her planlama evresinde rastgele 2 e\u015Fya
-      kazan\u0131r."
-    gameObject: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   itemPieceList:
-  - name: "TEK K\u0131l\u0131c\u0131"
-    image: {fileID: 21300000, guid: ad4824c788d7e624eafc3a11c50d9e2a, type: 3}
-    selectedHeroIndex: 0
-    description: "+15 Salduru g\xFCc\xFC"
-    gameObject: {fileID: 0}
-  - name: "Ni\u015Fanc\u0131 Yay\u0131"
-    image: {fileID: 21300000, guid: c4fece7b0e676de4dbe3909d661e56ba, type: 3}
-    selectedHeroIndex: 0
-    description: "+%15 Sald\u0131r\u0131 h\u0131z\u0131"
-    gameObject: {fileID: 0}
-  - name: "A\u015F\u0131r\u0131 B\xFCy\xFCk Sopa"
-    image: {fileID: 21300000, guid: 7f150b79bfe19d4488debcc0c5e34d2f, type: 3}
-    selectedHeroIndex: 0
-    description: "+%20 Yetenek g\xFCc\xFC"
-    gameObject: {fileID: 0}
-  - name: "Tanr\u0131\xE7a'n\u0131n G\xF6zya\u015F\u0131"
-    image: {fileID: 21300000, guid: 2d89aa4286ca2154d9e333d57a8ee463, type: 3}
-    selectedHeroIndex: 0
-    description: +15 Mana
-    gameObject: {fileID: 0}
-  - name: Zincir Yelek
-    image: {fileID: 21300000, guid: 6eb351d733d69784c8342af8c5229ad6, type: 3}
-    selectedHeroIndex: 0
-    description: "+25 Z\u0131rh"
-    gameObject: {fileID: 0}
-  - name: Negatron Pelerini
-    image: {fileID: 21300000, guid: 08488e72d8ff6614b811606fc13c67dd, type: 3}
-    selectedHeroIndex: 0
-    description: "+25 B\xFCy\xFC direnci"
-    gameObject: {fileID: 0}
-  - name: Dev Kemeri
-    image: {fileID: 21300000, guid: 071125ad1a693484dab578bd3164b0cd, type: 3}
-    selectedHeroIndex: 0
-    description: +200 Can
-    gameObject: {fileID: 0}
-  - name: Spatula
-    image: {fileID: 21300000, guid: 2fd8bff76c2441245a7aa5f3e83dae14, type: 3}
-    selectedHeroIndex: 0
-    description: "D\xF6n\xFC\u015F\xFCm e\u015Fyas\u0131"
-    gameObject: {fileID: 0}
-  - name: "\u0130dman Eldiveni"
-    image: {fileID: 21300000, guid: 3b6c56a1a72263c49ba9f69f089889b5, type: 3}
-    selectedHeroIndex: 0
-    description: "+%10 Krtik vurma ihtimali  / +%10  Sak\u0131nma ihtimali"
-    gameObject: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   heroGenericTypeList:
-  - name: Asi
-    image: {fileID: 21300000, guid: 3e3cdbfb9cb0a4948a305dc63816550e, type: 3}
-    exponent: 3
-    description: "8 saniye boyunca kalkan kazan\u0131r."
-    gameObject: {fileID: 0}
-  - name: "Hi\xE7lik Yarat\u0131\u011F\u0131"
-    image: {fileID: 21300000, guid: 8069046e439eb994a8541598a2f37a2b, type: 3}
-    exponent: 3
-    description: "Hi\xE7lik yarat\u0131\u011F\u0131 \u015Fampiyonlar\u0131 sald\u0131r\u0131lar\u0131
-      ve yetenekleri ger\xE7ek hasar verir."
-    gameObject: {fileID: 0}
-  - name: Sibernatik
-    image: {fileID: 21300000, guid: 452c70344f03ae445b432a3202bc6833, type: 3}
-    exponent: 3
-    description: "Sibernetik \u015Fampiyolar can ve sald\u0131r\u0131 g\xFCc\xFC
-      kazan\u0131r."
-    gameObject: {fileID: 0}
-  - name: Semavi
-    image: {fileID: 21300000, guid: 0a3895d96634d954b91429c8c0d44b5c, type: 3}
-    exponent: 2
-    description: "tak\u0131m arkada\u015Flar\u0131 yetenek ve sald\u0131r\u0131larla
-      verdi\u011Fi hasar\u0131n bir k\u0131sm\u0131n\u0131 iyile\u015Fme olarak kazan\u0131r"
-    gameObject: {fileID: 0}
-  - name: Valkrie
-    image: {fileID: 21300000, guid: 5d8b0b8b889faba438a8102bf30a74a3, type: 3}
-    exponent: 3
-    description: "Valkyrie`lerin sald\u0131r\u0131lar\u0131 yetenekleri %40 Can\u0131n
-      alt\u0131ndaki rakiplere he zaman kritik vuru\u015F yapar"
-    gameObject: {fileID: 0}
-  - name: "Zaman B\xFCk\xFC\xE7\xFC"
-    image: {fileID: 21300000, guid: 3e635fd05ba2b0b44bb26047651384ed, type: 3}
-    exponent: 2
-    description: "T\xFCm tak\u0131m arkada\u015Flar\u0131 birka\xE7 saniyede bir
-      %15 sald\u0131r\u0131 h\u0131z\u0131 kazan\u0131r."
-    gameObject: {fileID: 0}
-  - name: "Sonsuz Karanl\u0131k"
-    image: {fileID: 21300000, guid: 356cadf6759b5c14e80f639f69d4eda3, type: 3}
-    exponent: 3
-    description: "Katledildi\u011Finde di\u011Fer t\xFCm sonsuz karanl\u0131k tak\u0131m
-      arkada\u015Flar\u0131 sald\u0131r\u0131 g\xFCc\xFC ve yetenek g\xFCc\xFC kazan\u0131r"
-    gameObject: {fileID: 0}
-  - name: Meka Platu
-    image: {fileID: 21300000, guid: 35ca212a6be07d04a94a7fbf2a956113, type: 3}
-    exponent: 3
-    description: "Birle\u015Fip meka sava\u015F\xE7\u0131s\u0131n\u0131 olu\u015Fturur"
-    gameObject: {fileID: 0}
-  - name: "Uzay Korsan\u0131"
-    image: {fileID: 21300000, guid: ea94af7df0b0c8b458e77f5a79e088ef, type: 3}
-    exponent: 2
-    description: "b,Bir uzay korsan\u0131 son vuru\u015Fuyla bir birimi katlederse
-      ilave ganimet d\xFC\u015F\xFCrebilir."
-    gameObject: {fileID: 0}
-  - name: "Y\u0131ld\u0131z Muhaf\u0131z\u0131"
-    image: {fileID: 21300000, guid: b0b1aa8bc4d5fb0418f84a6d9510841f, type: 3}
-    exponent: 3
-    description: "Yetenek kulland\u0131\u011F\u0131nda di\u011Fer Y\u0131ld\u0131z
-      muhaf\u0131zlar\u0131na mana sa\u011Flar"
-    gameObject: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   heroFightStyleList:
-  - name: Empty
-    image: {fileID: 21300000, guid: 51304606fc65f7547b248a28359abca5, type: 3}
-    exponent: 99
-    description: Empty
-    gameObject: {fileID: 0}
-  - name: "D\xF6v\xFC\u015F\xE7\xFC"
-    image: {fileID: 21300000, guid: cc4eedd696dc55741b40f488d77a6d6e, type: 3}
-    exponent: 2
-    description: "D\xF6v\xFC\u015F\xE7\xFCler ilave azami can kazan\u0131r."
-    gameObject: {fileID: 0}
-  - name: Casus
-    image: {fileID: 21300000, guid: 226e7a1a8caae86479fcba644ebb72b6, type: 3}
-    exponent: 2
-    description: "\xC7at\u0131\u015Fman\u0131n ba\u015F\u0131nda 6 saniyeli\u011Fine
-      sald\u0131r\u0131 h\u0131z\u0131 kazan\u0131r . Bu etki bir rakip alt edild\u011Finde
-      yenilenir"
-    gameObject: {fileID: 0}
-  - name: Mistik
-    image: {fileID: 21300000, guid: 84b963c96c4150d46aaaf8343127df71, type: 3}
-    exponent: 2
-    description: "T\xFCm tak\u0131m arkada\u015Flar\u0131n b\xFCy\xFC direnci kazan\u0131r."
-    gameObject: {fileID: 0}
-  - name: "Paral\u0131 Asker"
-    image: {fileID: 21300000, guid: dc17681ff0c847843a0fafa83e99705a, type: 3}
-    exponent: 1
-    description: "paral\u0131 askerlerin yetenek geli\u015Ftirmeleri d\xFCllanda
-      \xE7\u0131kabilir"
-    gameObject: {fileID: 0}
-  - name: "Tetik\xE7i"
-    image: {fileID: 21300000, guid: 86c5c47b94509fe4bbc29e316388aee6, type: 3}
-    exponent: 2
-    description: "Her d\xF6rd\xFCnc\xFC normal sald\u0131r\u0131s\u0131 rasgele rakiplere
-      ilave sald\u0131r\u0131 ger\xE7ekle\u015Ftirir. Bu ilave sald\u0131r\u0131lar
-      normal sald\u0131rlarla ayn\u0131 hasar\u0131 verir isabet etkilerini uygular
-      ve kritik vuru\u015F yapabilir"
-    gameObject: {fileID: 0}
-  - name: "Mana Ya\u011Fmac\u0131s\u0131"
-    image: {fileID: 21300000, guid: 908b02dea1c692f43b3aa5eba9349dd6, type: 3}
-    exponent: 2
-    description: "Sald\u0131rd\u0131klar\u0131 kullan\u0131c\u0131lar\u0131n yeteneklerini
-      istedi\u011Fi mana y\u0131 artt\u0131r\u0131r"
-    gameObject: {fileID: 0}
-  - name: "B\xFCy\xFCc\xFC"
-    image: {fileID: 21300000, guid: 15b0c3cf24d72e44a9cc857a29b3ab22, type: 3}
-    exponent: 2
-    description: "T\xFCm tak\u0131m arkada\u015Flar\u0131n\u0131n yetenek g\xFCc\xFC
-      artar"
-    gameObject: {fileID: 0}
-  - name: "Patlay\u0131c\u0131 Uzman\u0131"
-    image: {fileID: 21300000, guid: e67809a03c467dd4bb5ef27919a126d4, type: 3}
-    exponent: 2
-    description: "Verdi\u011Fi hasar hedefleri 1.5 saniyeli\u011Fine sersemletir"
-    gameObject: {fileID: 0}
-  - name: "K\u0131l\u0131\xE7 Ustas\u0131"
-    image: {fileID: 21300000, guid: 51304606fc65f7547b248a28359abca5, type: 3}
-    exponent: 3
-    description: "Hedefe y\xF6nelik iki ilave sald\u0131r\u0131 tetikleyebilir. Bu
-      ilave sald\u0131r\u0131lar normal sald\u0131r\u0131larla ayn\u0131 hasar\u0131
-      verir"
-    gameObject: {fileID: 0}
-  - name: "\xD6nc\xFC"
-    image: {fileID: 21300000, guid: 36a832b18a62ee94c9b60956125b3834, type: 3}
-    exponent: 2
-    description: "\xD6nc\xFC \u015Fampiyonlar ilave z\u0131rh kazan\u0131r"
-    gameObject: {fileID: 0}
-  - name: "Keskin Ni\u015Fanc\u0131"
-    image: {fileID: 21300000, guid: a40dc369066d36544bb327806ccb52cc, type: 3}
-    exponent: 2
-    description: "Her h\xFCcre ba\u015F\u0131na fazladan %15 hasar verir"
-    gameObject: {fileID: 0}
-  - name: Koruyucu
-    image: {fileID: 21300000, guid: 7520f309dea7c3f46aa3ec0b434efb3b, type: 3}
-    exponent: 2
-    description: "4 saniyeli\u011Fine kalkan kazan\u0131r . Bu kalkan birikmez."
-    gameObject: {fileID: 0}
-  - name: Uzay Gemisi
-    image: {fileID: 21300000, guid: 30eb77e406790804ab39a2b08942d60e, type: 3}
-    exponent: 2
-    description: "4 saniyeli\u011Fine kalkan kazan\u0131r . Bu kalkan birikmez."
-    gameObject: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bestHeroTeamList:
   - heroList: []
     winCount: 0
@@ -4670,7 +2590,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1402579765
 GameObject:
@@ -5496,7 +3416,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832398860
 GameObject:

@@ -8,39 +8,29 @@ using static GameManager;
 
 public class CanvasManager : MonoBehaviour
 {
-    public static CanvasManager instance;
 
-    public GameObject heroMenuRect;
-    public GameObject ItemMenuRect;
-    public GameObject myHeroMenuRect;
-    public GameObject pieceItemMenuRect;
-    public GameObject complateItemMenuRect;
-    public GameObject selectedInfoRect;
-    public GameObject suggestionRect;
-    public GameObject extraItemSuggestionRect;
-    //public GameObject generalSuggestionRect;
-    public GameObject heroTeamSuggestionRect;
-    public GameObject itemSuggestionRect;
-    public GameObject currentTeamBuffRect;
-    public GameObject askWinLoseRect;
-    public GameObject addItemRect;
     public Text teamBuffText;
     public Text PlayerLevelText;
 
-    public GameObject ItemSuggestionItemPrefab;
-    public GameObject HeroButtonPrefab;
-    public GameObject HeroCardButtonPrefab;
-    public GameObject AddIPieceItemButtonPrefab;
-    public GameObject AddComplateItemButtonPrefab;
-    public GameObject currentBuffItemPrefab;
+    #region Contents
 
+    public Transform heroMenu_Content;
+    public Transform ItemMenu_Content;
+    public Transform myHeroMenu_Content;
+    public Transform pieceItemMenu_Content;
+    public Transform complateItemMenu_Content;
+    public Transform currentTeamBuff_Content;
+    public Transform askWinLose_Content;
+    public Transform addItem_Content;
+    public Transform myHeroItems_Content;
+
+    #endregion
 
     public Button removeHeroButton;
 
     public Text selectedHeroNameText;
-    //public GameObject bestItemsRect;
-    public GameObject myHeroItemsRect;
 
+    public static CanvasManager instance;
 
     private void Awake()
     {
@@ -56,22 +46,12 @@ public class CanvasManager : MonoBehaviour
 
     private void Start()
     {
-        for (int t = 0; t < currentTeamBuffRect.transform.childCount; t++)
+        for (int t = 0; t < currentTeamBuff_Content.transform.childCount; t++)
         {
-            currentTeamBuffRect.transform.GetChild(t).gameObject.SetActive(false);
+            currentTeamBuff_Content.transform.GetChild(t).gameObject.SetActive(false);
         }
 
         RefreshListes();
-        //StartCoroutine(CanvasFixer());
-    }
-
-    IEnumerator CanvasFixer()
-    {
-        while (true)
-        {
-            RefreshListes();
-            yield return new WaitForEndOfFrame();
-        }
     }
 
     public void RefreshListes()
@@ -88,7 +68,7 @@ public class CanvasManager : MonoBehaviour
         GameManager.instance.myHeroList.Remove(hero);
         RefreshListes();
     }
-    
+
     public void PlayerLevelIncreaseButtonClick()
     {
         GameManager.instance.playerLevel++;
@@ -185,33 +165,8 @@ public class CanvasManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(UnityEngine.Random.Range(150, 210));
             }
-            askWinLoseRect.SetActive(true);
         }
     }
-
-    #region Dropdown OnValueChange
-
-    //public void GenericTypeDropdownOnValueChange(int genericType)
-    //{
-    //    GameManager.instance.currentGenericType = genericType;
-    //    SetHeroList();
-    //}
-
-    public void MyAreasDropdownOnValueChange(int index)
-    {
-        if (index == 0)
-        {
-            myHeroMenuRect.SetActive(true);
-            pieceItemMenuRect.SetActive(false);
-        }
-        else
-        {
-            myHeroMenuRect.SetActive(false);
-            pieceItemMenuRect.SetActive(true);
-        }
-    }
-
-    #endregion
 
     #region ItemPieceAddRemove
 
@@ -226,7 +181,6 @@ public class CanvasManager : MonoBehaviour
         GameManager.instance.myPieceItemList.Remove(
             GameManager.instance.myPieceItemList.Where(x => x.name == GameManager.instance.itemPieceList[index].name).FirstOrDefault()
             );
-        //SetMyItemPiece();
     }
 
     #endregion
@@ -237,9 +191,9 @@ public class CanvasManager : MonoBehaviour
     {
         GameManager.instance.heroList = GameManager.instance.heroList.OrderBy(x => x.level).ThenBy(x => x.HeroGenericType).ToList();
 
-        for (int i = 0; i < heroMenuRect.transform.childCount; i++)
+        for (int i = 0; i < heroMenu_Content.childCount; i++)
         {
-            Destroy(heroMenuRect.transform.GetChild(i).gameObject);
+            Destroy(heroMenu_Content.GetChild(i).gameObject);
         }
 
         if (GameManager.instance.myHeroList.Count > 0)
@@ -249,8 +203,8 @@ public class CanvasManager : MonoBehaviour
             {
                 Hero myHero = new Hero();
                 myHero = hero;
-                myHero.gameObject = Instantiate(HeroButtonPrefab);
-                myHero.gameObject.transform.SetParent(heroMenuRect.transform);
+                myHero.gameObject = Instantiate(PrefabManager.instance.Hero_Button);
+                myHero.gameObject.transform.SetParent(heroMenu_Content);
                 myHero.gameObject.GetComponent<Image>().sprite = hero.image;
                 myHero.gameObject.transform.GetChild(0).GetComponent<Text>().text = hero.name;
                 myHero.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[hero.HeroGenericType].image;
@@ -267,13 +221,13 @@ public class CanvasManager : MonoBehaviour
             {
                 Hero myHero = new Hero();
                 myHero = hero;
-                myHero.gameObject = Instantiate(HeroButtonPrefab);
-                myHero.gameObject.transform.SetParent(heroMenuRect.transform);
+                myHero.gameObject = Instantiate(PrefabManager.instance.Hero_Button);
+                myHero.gameObject.transform.SetParent(heroMenu_Content);
                 myHero.gameObject.GetComponent<Image>().sprite = hero.image;
                 myHero.gameObject.transform.GetChild(0).GetComponent<Text>().text = hero.name;
                 myHero.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList[hero.HeroGenericType].image;
                 myHero.gameObject.transform.GetChild(2).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList[hero.HeroFightStyleList[0]].image;
-                myHero.gameObject.transform.GetChild(3).GetComponent<Text>().text = ""; //"%" + GameManager.instance.heroList[i].winRate.ToString();
+                myHero.gameObject.transform.GetChild(3).GetComponent<Text>().text = "";
 
                 myHero.gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
                 myHero.gameObject.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.AddHeroToMyHeroList(myHero));
@@ -285,8 +239,7 @@ public class CanvasManager : MonoBehaviour
     {
         foreach (ItemPiece itemPiece in GameManager.instance.itemPieceList)
         {
-            itemPiece.gameObject = Instantiate(AddIPieceItemButtonPrefab);
-            //itemPiece.gameObject.transform.SetParent();
+            //itemPiece.gameObject = Instantiate(AddIPieceItemButtonPrefab);
 
             itemPiece.gameObject.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.TakePieceItem(itemPiece));
 
@@ -307,20 +260,9 @@ public class CanvasManager : MonoBehaviour
     {
         foreach (Item item in GameManager.instance.itemList)
         {
-            item.gameObject = Instantiate(AddComplateItemButtonPrefab);
-            //item.gameObject.transform.SetParent();
-
             item.gameObject.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.TakeItem(item));
 
             item.gameObject.GetComponent<Image>().sprite = item.image;
-
-            //if (GameManager.instance.myComplateItemList.Where(x => x.name == item.name).FirstOrDefault() != null)
-            //    complateItemMenuRect.transform.GetChild(i).GetChild(0).GetComponent<Text>().text =
-            //        GameManager.instance.myComplateItemList.Where(x => x.name == item.name).Count().ToString();
-            //else
-            //{
-            //    item.gameObject.transform.GetChild(0).GetComponent<Text>().text = "0";
-            //}
         }
     }
 
@@ -328,31 +270,18 @@ public class CanvasManager : MonoBehaviour
 
     #region MyListsArrangement
 
-    public void SetSelectedInfoList(int index)
-    {
-        extraItemSuggestionRect.SetActive(false);
-        heroTeamSuggestionRect.SetActive(false);
-
-        //suggestionRect.SetActive(true);
-        //extraItemSuggestionRect.SetActive(false);
-
-        //GameManager.instance.selectedHeroIndex = index;
-
-        //GameManager.instance.MakeSuggestionforSelectedHero();
-    }
-
     public void SetMyHeroList(List<Hero> heroList)
     {
-        for (int i = 0; i < myHeroMenuRect.transform.childCount; i++)
+        for (int i = 0; i < myHeroMenu_Content.transform.childCount; i++)
         {
-            Destroy(myHeroMenuRect.transform.GetChild(i).gameObject);
+            Destroy(myHeroMenu_Content.transform.GetChild(i).gameObject);
         }
 
 
         foreach (Hero hero in GameManager.instance.myHeroList)
         {
-            hero.gameObject = Instantiate(HeroCardButtonPrefab);
-            hero.gameObject.transform.SetParent(myHeroMenuRect.transform);
+            hero.gameObject = Instantiate(PrefabManager.instance.HeroCard_Button);
+            hero.gameObject.transform.SetParent(myHeroMenu_Content.transform);
 
             hero.gameObject.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
 
@@ -380,7 +309,7 @@ public class CanvasManager : MonoBehaviour
 
 
             GameManager.instance.SetHeroItems(hero);
-            
+
             #region Current Buff System
 
             GameManager.instance.currentBuffNameList.Clear();
@@ -408,33 +337,14 @@ public class CanvasManager : MonoBehaviour
                 }
             }
 
-            for (int i = 0; i < currentTeamBuffRect.transform.childCount; i++)
+            for (int i = 0; i < currentTeamBuff_Content.transform.childCount; i++)
             {
 
-                Destroy(currentTeamBuffRect.transform.GetChild(i));
+                Destroy(currentTeamBuff_Content.transform.GetChild(i));
             }
 
-            //foreach (string buffName in GameManager.instance.currentBuffNameList)
-            //{
-            //    if (GameManager.instance.heroGenericTypeList.Where(x => x.name == buffName).Count() != 0)
-            //    {
-            //        currentTeamBuffRect.transform.GetChild(t).GetComponent<Image>().sprite = GameManager.instance.heroGenericTypeList.Where(x => x.name == buffName).FirstOrDefault().image;
-            //    }
-            //    else
-            //    {
-            //        currentTeamBuffRect.transform.GetChild(t).GetComponent<Image>().sprite = GameManager.instance.heroFightStyleList.Where(x => x.name == buffName).FirstOrDefault().image; ;
-            //    }
-
-            //    currentTeamBuffRect.transform.GetChild(t).gameObject.SetActive(true);
-            //}
-            
-
             #endregion
-
         }
-
     }
-    
     #endregion
-
 }
