@@ -8,12 +8,13 @@ public class Hero : ScriptableObject
     public Sprite image;
     public Sprite cardImage;
     public int level;
-    public List<Item> betterItemList;
-    public int HeroGenericType;
-    public List<int> HeroFightStyleList;
+    public HeroGenericType HeroGenericType;
+    public List<HeroFightStyle> HeroFightStyleList;
     public string description;
-    
 
+    
+    [HideInInspector]
+    public List<Item> betterItemList;
     [HideInInspector]
     public int gameLevel;
     [HideInInspector]

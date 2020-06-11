@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     public List<BestHeroTeam> bestHeroTeamList = new List<BestHeroTeam>();
     public List<Hero> myHeroList = new List<Hero>();
+    BestHeroTeam myHeroTeam = new BestHeroTeam();
     public List<Item> myComplateItemList = new List<Item>();
     public List<ItemPiece> myPieceItemList = new List<ItemPiece>();
     public List<Hero> suggestionHeroList = new List<Hero>();
@@ -293,7 +294,7 @@ public class GameManager : MonoBehaviour
         {
             item.selectedHero.currentItemList.Add(item);
         }
-        CanvasManager.instance.RefreshListes();
+        MainScene.instance.RefreshListes();
     }
 
     public void TakePieceItem(ItemPiece itemPiece)
@@ -339,7 +340,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        CanvasManager.instance.RefreshListes();
+        MainScene.instance.RefreshListes();
     }
 
     public void BuyItem(Item item)
@@ -360,7 +361,7 @@ public class GameManager : MonoBehaviour
         }
         item.selectedHero.currentItemList.Add(item);
 
-        CanvasManager.instance.RefreshListes();
+        MainScene.instance.RefreshListes();
     }
 
     public void BuyPieceItem(ItemPiece itemPiece)
@@ -404,21 +405,21 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        CanvasManager.instance.RefreshListes();
+        MainScene.instance.RefreshListes();
     }
 
     void RemoveItemPiece(ItemPiece itemPiece)
     {
         itemPiece.selectedHero.currentItemPieceList.Remove(itemPiece);
         Destroy(itemPiece.gameObject);
-        CanvasManager.instance.RefreshListes();
+        MainScene.instance.RefreshListes();
     }
 
     void RemoveComplateItem(Item item)
     {
         item.selectedHero.currentItemList.Remove(item);
         Destroy(item.gameObject);
-        CanvasManager.instance.RefreshListes();
+        MainScene.instance.RefreshListes();
     }
 
     List<Hero> tempHeroList = new List<Hero>();
@@ -443,22 +444,36 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < heroGenericTypeList.Count; i++)
+
+            #region Current Buff System
+
+            currentBuffNameList.Clear();
+
+            foreach (HeroGenericType heroGenericType in heroGenericTypeList)
             {
-                if (heroList.Where(x => x.HeroGenericType == i).Count() / heroGenericTypeList[i].exponent >= 0)
+                if (myHeroList.Where(x => x.HeroGenericType == heroGenericType).Count() / heroGenericType.exponent >= 1)
                 {
-                    tempBestHeroTeam.winRate += (int)(heroList.Where(x => x.HeroGenericType == i).Count() / heroGenericTypeList[i].exponent);
+                    for (int j = 0; j < (int)(myHeroList.Where(x => x.HeroGenericType == heroGenericType).Count() / heroGenericType.exponent); j++)
+                    {
+
+                        tempBestHeroTeam.buffCount += (int)(myHeroList.Where(x => x.HeroGenericType == heroGenericType).Count() / heroGenericType.exponent);
+                    }
                 }
             }
 
-            for (int i = 0; i < heroFightStyleList.Count; i++)
-            {
 
-                if (heroList.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent >= 0)
+            foreach (HeroFightStyle heroFightStyle in heroFightStyleList)
+            {
+                if (myHeroList.Where(x => x.HeroFightStyleList.Contains(heroFightStyle)).Count() / heroFightStyle.exponent >= 1)
                 {
-                    tempBestHeroTeam.winRate += (int)(heroList.Where(x => heroFightStyleList[x.HeroFightStyleList[0]].name == heroFightStyleList[i].name || heroFightStyleList[x.HeroFightStyleList[1]].name == heroFightStyleList[i].name).Count() / heroFightStyleList[i].exponent);
+                    for (int j = 0; j < (int)(myHeroList.Where(x => x.HeroFightStyleList.Contains(heroFightStyle)).Count() / heroFightStyle.exponent); j++)
+                    {
+                        tempBestHeroTeam.buffCount += (int)(myHeroList.Where(x => x.HeroFightStyleList.Contains(heroFightStyle)).Count() / heroFightStyle.exponent);
+                    }
                 }
             }
+
+            #endregion
 
             tempBestHeroTeam.winRate = tempBestHeroTeam.winRate * 10;
         }
@@ -488,7 +503,7 @@ public class GameManager : MonoBehaviour
                 ArrangeSuggestionHeroList(tempHeroList);
             }
         }
-        CanvasManager.instance.RefreshListes();
+        MainScene.instance.RefreshListes();
 
     }
 
@@ -524,6 +539,85 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetMyHeroList(List<Hero> heroList)
+    {
+        for (int i = 0; i < MainScene.instance.myHeroMenu_Content.transform.childCount; i++)
+        {
+            Destroy(MainScene.instance.myHeroMenu_Content.transform.GetChild(i).gameObject);
+        }
+
+
+        foreach (Hero hero in myHeroList)
+        {
+            hero.gameObject = Instantiate(PrefabManager.instance.HeroCard_Button);
+            hero.gameObject.transform.SetParent(MainScene.instance.myHeroMenu_Content.transform);
+
+
+
+            hero.gameObject.transform.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+
+            hero.gameObject.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => MainScene.instance.RemoveHeroButtonOnClick(hero));
+
+            hero.gameObject.transform.GetComponent<Image>().sprite = hero.cardImage;
+            hero.gameObject.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = hero.name;
+
+            //heroCardDisplay.HeroInfo_Content.GetComponent<Image>().sprite = hero.HeroGenericType.image;
+            //heroCardDisplay.HeroInfo_Content.transform.GetChild(0).GetComponent<Text>().text = hero.HeroGenericType.name;
+
+            foreach (HeroFightStyle heroFightStyle in hero.HeroFightStyleList)
+            {
+
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(1).GetComponent<Image>().sprite = heroFightStyle.image;
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = heroFightStyle.name;
+
+            }
+
+            if (hero.HeroFightStyleList.LastOrDefault() != null)
+            {
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(2).GetComponent<Image>().sprite = hero.HeroFightStyleList.LastOrDefault().image;
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(2).GetChild(0).GetComponent<Text>().text = hero.HeroFightStyleList.LastOrDefault().name;
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(2).gameObject.SetActive(true);
+            }
+            else
+            {
+                hero.gameObject.transform.GetChild(2).GetChild(1).GetChild(2).gameObject.SetActive(false);
+            }
+
+
+            SetHeroItems(hero);
+
+            #region Current Buff System
+
+            currentBuffNameList.Clear();
+
+
+            foreach (HeroGenericType heroGenericType in heroGenericTypeList)
+            {
+                if (myHeroList.Where(x => x.HeroGenericType == heroGenericType).Count() / heroGenericType.exponent >= 1)
+                {
+                    for (int j = 0; j < (int)(myHeroList.Where(x => x.HeroGenericType == heroGenericType).Count() / heroGenericType.exponent); j++)
+                    {
+
+                        myHeroTeam.buffCount += (int)(myHeroList.Where(x => x.HeroGenericType == heroGenericType).Count() / heroGenericType.exponent);
+                    }
+                }
+            }
+
+
+            foreach (HeroFightStyle heroFightStyle in heroFightStyleList)
+            {
+                if (myHeroList.Where(x => x.HeroFightStyleList.Contains(heroFightStyle)).Count() / heroFightStyle.exponent >= 1)
+                {
+                    for (int j = 0; j < (int)(myHeroList.Where(x => x.HeroFightStyleList.Contains(heroFightStyle)).Count() / heroFightStyle.exponent); j++)
+                    {
+                        myHeroTeam.buffCount += (int)(myHeroList.Where(x => x.HeroFightStyleList.Contains(heroFightStyle)).Count() / heroFightStyle.exponent);
+                    }
+                }
+            }
+
+            #endregion
+        }
+    }
     #region Classes
 
     [Serializable]
